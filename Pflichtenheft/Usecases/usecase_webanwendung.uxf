@@ -7,7 +7,7 @@
       <x>340</x>
       <y>50</y>
       <w>350</w>
-      <h>290</h>
+      <h>220</h>
     </coordinates>
     <panel_attributes>Webanwendung
 halign=left</panel_attributes>
@@ -29,32 +29,10 @@ halign=left</panel_attributes>
     <coordinates>
       <x>370</x>
       <y>100</y>
-      <w>150</w>
+      <w>200</w>
       <h>40</h>
     </coordinates>
-    <panel_attributes>Server hinzufügen</panel_attributes>
-    <additional_attributes/>
-  </element>
-  <element>
-    <id>UMLUseCase</id>
-    <coordinates>
-      <x>400</x>
-      <y>210</y>
-      <w>150</w>
-      <h>40</h>
-    </coordinates>
-    <panel_attributes>Ansicht anpassen</panel_attributes>
-    <additional_attributes/>
-  </element>
-  <element>
-    <id>UMLUseCase</id>
-    <coordinates>
-      <x>370</x>
-      <y>270</y>
-      <w>150</w>
-      <h>40</h>
-    </coordinates>
-    <panel_attributes>Daten vergleichen</panel_attributes>
+    <panel_attributes>Datensammler starten</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
@@ -65,7 +43,18 @@ halign=left</panel_attributes>
       <w>150</w>
       <h>40</h>
     </coordinates>
-    <panel_attributes>Server entfernen</panel_attributes>
+    <panel_attributes>Ansicht anpassen</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLUseCase</id>
+    <coordinates>
+      <x>370</x>
+      <y>210</y>
+      <w>150</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>Daten vergleichen</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
@@ -84,11 +73,11 @@ halign=left</panel_attributes>
     <coordinates>
       <x>270</x>
       <y>120</y>
-      <w>150</w>
-      <h>130</h>
+      <w>130</w>
+      <h>70</h>
     </coordinates>
     <panel_attributes/>
-    <additional_attributes>10.0;10.0;130.0;110.0</additional_attributes>
+    <additional_attributes>10.0;10.0;110.0;50.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
@@ -96,20 +85,9 @@ halign=left</panel_attributes>
       <x>270</x>
       <y>120</y>
       <w>120</w>
-      <h>190</h>
+      <h>130</h>
     </coordinates>
     <panel_attributes/>
-    <additional_attributes>10.0;10.0;100.0;170.0</additional_attributes>
-  </element>
-  <element>
-    <id>Relation</id>
-    <coordinates>
-      <x>270</x>
-      <y>120</y>
-      <w>130</w>
-      <h>70</h>
-    </coordinates>
-    <panel_attributes/>
-    <additional_attributes>10.0;10.0;110.0;50.0</additional_attributes>
+    <additional_attributes>10.0;10.0;100.0;110.0</additional_attributes>
   </element>
 </diagram>
