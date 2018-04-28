@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>ES6</title>
+    <title>React.js</title>
     <meta charset="utf-8">
     <style>
       @import url(https://fonts.googleapis.com/css?family=Yanone+Kaffeesatz);
@@ -13,15 +13,29 @@
         font-family: 'Yanone Kaffeesatz';
         font-weight: normal;
       }
+      a, a > code {
+        color: rgb(249, 38, 114);
+        text-decoration: none;
+      }
       .remark-code, .remark-inline-code { font-family: 'Ubuntu Mono'; }
+      .inverse {
+        background: #272822;
+        color: #777872;
+        text-shadow: 0 0 20px #333;
+      }
+      .footnote {
+        position: absolute;
+        bottom: 3em;
+      }
+      .red { color: #fa0000; }
     </style>
   </head>
   <body>
     <textarea id="source">
 
-class: center, middle
+class: center, middle, inverse
 
-# EcmaScript 6
+# React.js
 
 ## Rich-Client Applications
 ### Sommersemester 2018
@@ -29,353 +43,181 @@ class: center, middle
 Daniel Nagel
 
 Devin-Alexander Meier
+
+.footnote[Inspiriert durch: [React.js Tutorial](https://github.com/eggheadio-projects/the-beginner-s-guide-to-reactjs)]
 ---
 
-# Neue Variablen deklarationen
+## Was ist React.js?
 
-Aus ES5 ist 'var' bereits bekannt.
+- React.js ist ein Framework, welches zur Ausgabe von User-Interface Komponenten
+auf Websites benutzt wird..red[*]
 
-Neu sind:
+- React.js bildet die Basis für Single Page Applications, kann jedoch auch
+mittels Node.js serverseitig (vor-)gerendert werden..red[*]
 
-* 'let' wird zur deklaration von Variablen verwendet die nur innerhalb eines Blocks sichtbar sein sollen.
-* 'const' wird für Konstante Variablen verwendet und sind somit nach der Deklaration unveränderbar.
+.footnote[.red[*] Quelle: [wikipedia.org](https://de.wikipedia.org/wiki/React)]
+---
+class: center, middle, inverse
+# Entwickeln mit React.js
+---
+
+## React.js in das eigene Projekt einbinden
+
+- React.js kann mit CDN-Links (Content Delivery Networks) in das eigene Projekt
+eingefügt werden.
+- Beim Aufrufen der Website wird React.js vom CDN angefordert.
+
+```html
+<script src="https://unpkg.com/react@16/umd/react.development.js"></script>
+<script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+```
+---
+## Erstellen von DOM-Elementen
+
+- Mit React.js lassen sich DOM-Elemente wie Objekte behandeln.
+- Anders wie bei herkömmlichen JavaScript können dem Element mit React.js
+bereits bei der erstellung alle Attribute mitgegeben werden.
 
 ```javascript
-// var
-var name = 'daniel';
+// Hinzufügen eines Elements zu einem bestehenden.
+// Standard JavaScript
+const rootElement = document.getElementById('root')
+const element = document.createElement('div')
+element.textContent = 'Hello World'
+element.className = 'container'
+rootElement.appendChild(element)
 
-if (name  !== undefined) { var name = 'devin'; }
+// React.js
+const rootElement = document.getElementById('root')
+const element = React.createElement(
+  'div',
+  {className: 'container'},
+  'Hello World'
+)
+ReactDOM.render(element, rootElement)
+```
+---
+## Erstellen einer Benutzeroberfläche mit JSX
 
-console.log(name);
-// Konsolenausgabe: devin
+- Mithile von React.js JSX kann eine Benutzeroberfläche im JavaScript Code auf
+vertrautere Weise, also wie eine einfache HTML Seite, erstellt werden.
+- Damit das JSX Element nicht falsch interpretiert wird, wird babel benötigt
+(Erläuterung auf nächster Folie).
 
-// let
-let name = 'daniel';
+```html
+<div id="root"></div>
+<script src="https://unpkg.com/react@16/umd/react.development.js"></script>
+<script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+<script src="https://unpkg.com/babel-standalone@6.26.0/babel.js"></script>
+<script type="text/babel"> <!-- Hier ist kein JavaScript! -->
+  const rootElement = document.getElementById('root')
+  const element = <div className="container">Hello World</div>
+  ReactDOM.render(element, rootElement)
+</script>
 
-if (name  !== undefined) { let name = 'devin'; }
+```
+---
+## Was ist babel.js?
 
-console.log(name);
-// Konsolenausgabe: daniel
+- Babel ist ein JavaScript Compiler.
+- Babel kann die neueste JavaScript Version in eine ältere, Browserkompatible
+Version übersetzen.
+---
+## Unterschiede zwischen JSX und HTML
+
+- In JSX sind die Attribut Namen eines Elements anders wie bei HTML
+
+```html
+HTML
+<div class="container">Hello</div>
+
+JSX
+<div className="container">Hello</div>
+```
+
+- Ein Element in JSX kann bei der Deklaratione auch über mehrere Zeilen gehen.
+
+-  Innerhalb eines JSX Elements kann JavaScript innerhalb von geschweiften
+Klammern ausgeführt werden.
+
+```javascript
+const element = <div className="container">{console.log("Hello there")}"Hello"</div>
+```
+
+---
+## Eigene React Elemente erstellen
+
+- Eigene DOM-Elemente mit JSX zu erstellen ist keine große Sache.
+
+```javscript
+// Eine Arrow Funktion die als Argument ein Objekt erwartet.
+const rootElement = document.getElementById('root')
+const Message = props => <div>{props.msg}</div>
+const element = (
+  <Message msg='Hello World'/>
+)
+ReactDOM.render(element, rootElement)
+// Ausgabe im Browser: Hello World
+```
+
+- Der von Babel übersetzte Seitenquelltext sieht wie folgt aus:
+
+```html
+<div id="root">
+  <div>Hello World</div>
+</div>
+```
+---
+## Validieren von Eigenschaften eines eigenen React Elements.
+
+- Mithilfe der React.js Erweiterung prop-type.js können Eigenschaften validiert
+werden.
+
+```javascript
+<script src="https://unpkg.com/react@16/umd/react.development.js"></script>
+<script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+<script src="https://unpkg.com/prop-types@15.6.1/prop-types.js"></script>
+<script src="https://unpkg.com/babel-standalone@6.26.0/babel.js"></script>
+
+<div id="root"></div>
+
+<script type="text/babel">
+  function SayHello(props) {
+    return (
+      <div>
+        Hello {props.firstName} {props.lastName}!
+      </div>
+    )
+  }
+```
+
+---
+## Validieren von Eigenschaften eines eigenen React Elements.
+
+### Fortsetzung
+
+```javascript
+  SayHello.propTypes = {
+    firstName: PropTypes.string.isRequired,
+    lastName: PropTypes.string.isRequired,
+  }
+
+  ReactDOM.render(
+    <SayHello firstName={true} />,
+    document.getElementById("root")
+  )
+</script>
 ```
 
 ---
 
-# Arrow Funktionen
+## Validieren von Eigenschaften eines eigenen React Elements.
 
-Statt dem Keyword 'function' kann der Arrow Operator '=>' benutzt werden, um eine Funktion zu deklarieren.
+### Fortsetzung
 
-```javascript
-//ES5
-function func(a,b,c) {}		//Deklaration
-var func = function(a,b,c) {}	//Ausdruck
+- Folgende Fehlermeldung erscheint in der Konsole des Browsers:
 
-//ES6
-let func = a => {}		//Ein Parameter
-let func = (a,b,c) => {}	//Mehrere Parameter
-```
----
-
-# String interpolation
-
-Ausdrücke können innerhalb eines String eingebettet werden. Ähnlich wie in den Programmiersprachen Python, Perl oder Swift.
-
-```javascript
-const date = new Date();
-
-//ES5
-var str = 'Release date: ' + date;
-
-//ES6
-let str = 'Release date: ${date}';
-```
-
----
- 
-# Mehrzeilige Strings
-
-Mit EcmaScript 6 sind jetzt mehrzeilige Strings möglich, was für eine schönere formatierung sorgt. Vorher mussten Strings zur schöneren Formatierung des Codes Konkateniert werden.
-
-```javascript
-//ES5
-var str = 'Mehrere ' +
-	  'Zeilen';
-
-//ES6
-let str = 'Mehrere
-	   Zeilen';
-```
-
----
-
-# Implizite Rückgaben
-
-In EcmaScript 6 können Rückgaben innerhalb einer Funktion ohne das Keyword 'return' erfolgen, wenn die Programm Logik dies erlaubt.
-
-```javascript
-//ES5
-function func(a,b,c) {return a+b+c;}
-
-//ES6
-let func = (a,b,c) => a+b+c;
-```
----
-
-# Schlüsselwertpaare kurzschreibweise
-
-Wenn Eigenschaften, Variablen des selben Namens zugewiesen werden kann die kurzschreibweise angewendet werden.
-
-```javascript
-//ES5
-var obj = {
-	a: a,
-	b: b
-	}
-
-//ES6
-let obj = {
-	a,
-	b
-	}
-```
-
----
-
-# Methoden Definition kurzschreibweise
-
-Das Keyword 'function' kann weggelassen werden, wenn man einem Objekt eine Methode hinzufügt.
-
-```javascript
-//ES5
-var obj = {
-	a: function(c,d) {},
-	b: function(e,f) {}
-	}
-
-//ES6
-let obj = {
-	a(c,d) {},
-	b(e,f) {}
-	}
-```
-
----
-
-# Objekt zuweisung
-
-Mit geschweiften Klammern können die Eigenschaften eines Objekt automatisch mehreren Variablen zugeordnet werden. Wenn der Parameter nicht zugewiesen werden kann wird undefined in der Variable gespeichert.
-
-```javascript
-var obj = { a:1, b:2, c:3 };
-
-//ES5
-var a = obj.a;
-var b = obj.b;
-var c = obj.c;
-
-//ES6
-let {a,b,c} = obj;
-```
-
----
-
-# Array iterationen
-
-Es kann durch iterierbare Objekte iteriert werden. Dafür wird innerhalb einer for-Schleifen Signatur statt der Zähler Variable, eine Variable verwendet die das Aktuelle Objekt des iterierbaren Objekts enthält. Diese Zuweisung erfolgt mit dem Schlüsselwort 'of'.
-
-```javascript
-var arr = ['a', 'b', 'c'];
-//ES5
-for (var i = 0; i <= arr.length; i++) {
-	console.log(arr[i]);
-}
-
-//ES6
-for (let i of arr) {
-	console.log(i);
-}
-```
-
----
-
-# Standard Parameter
-
-Ein Methoden Parameter kann einen Standardwert zugewiesen bekommen. Sollte dieser Parameter beim Aufruf leer gelassen werden, wird der Standardparameter stattdessen eingesetzt. Diese Prinzip ist aus anderen Programmiersprachen, wie etwa Python, C++ oder Swift, bekannt.
-
-```javascript
-//ES5
-var func = function(a,b) {
-	b = (b === undefined) ? 2 : b;
-	return a+b;
-}
-
-//ES6
-let func = (a, b = 2) => {
-	return a+b;
-}
-
-```
-
----
-
-# Spread Syntax
-
-Mit dem '...' Operator kann ein Array entpackt werden. Ein ähnlicher Ansatz wird in der Programmiersprache Swift verfolgt.
-
-```javascript
-//ES6
-let arr1 = [1, 2, 3];
-let arr2 = ['a', 'b', 'c'];
-let arr3 = [...arr1, ...arr2];
-
-console.log(arr3); // [1, 2, 3, "a", "b", "c"]
-
-//ES6
-let arr1 = [1, 2, 3];
-let func = (a, b, c) => a + b + c;
-
-console.log(func(...arr1)); // 6 
-
-```
-
----
-
-# Klassen
-
-Mit EcmaScript 6 wurden auch Klassen eingeführt. Mit deren Hilfe lässt sich Code effizienter gestalten und viel Schreibarbeit sparen. Der Objekt-Orientierte Ansatz, welchen diese Änderung mit sich bringt ist bereits aus einigen OO-Programmiersprachen bekannt, etwa Java oder C++.
-
-```javascript
-//ES5
-function Func(a, b) {
-    this.a = a;
-    this.b = b;
-}
-
-Func.prototype.getSum = function() {
-    return this.a + this.b;
-}
-
-var x = new Func(3, 4);
-```
----
-# Klassen
-
-```javascript
-//ES6
-class Func {
-    constructor(a, b) {
-        this.a = a;
-        this.b = b;
-    }
-
-    getSum() {
-        return this.a + this.b;
-    }
-}
-
-let x = new Func(3, 4);
-```
-
----
-
-# Vererbung
-
-Das Keyword 'extends' erstellt eine Sub-Klasse.
-
-```javascript
-//ES6
-class Inheritance extends Func {
-    constructor(a, b, c) {
-        super(a, b);
-
-        this.c = c;
-    }
-
-    getProduct() {
-        return this.a * this.b * this.c;
-    }
-}
-
-let y = new Inheritance(3, 4, 5);
-```
-
----
-
-# Export/Import von Modulen
-
-Mit dem Export und Import von Modulen kann der Code in kleine Module aufgeteilt werden, statt die gesamte Logik in einem Script zu verwalten.
-
-```javascript
-//index.js
-<script src="export.js"></script>
-<script type="module" src="import.js"></script>
-
-//export.js
-let func = a => a + a;
-let obj = {};
-let x = 0;
-
-export { func, obj, x };
-
-//import.js
-import { func, obj, x } from './export.js';
-
-console.log(func(3), obj, x);
-```
-
----
-
-# Promises/Callbacks
-
-Promises können verwendet werden um auf die Fertigstellung eines asynchronen Prozesses zuwarten.
-
-```javascript
-//ES5 callback
-function makeRequest(method, url, callback) {
-    var request = new XMLHttpRequest();
-
-    request.open(method, url);
-    request.onload = function() {
-        callback(null, request.response);
-    };
-    request.onerror = function() {
-        callback(request.response);
-    };
-    request.send();
-}
-makeRequest('GET', 'https://url.json', function (err, data) {
-        if (err) { 
-            throw new Error(err);
-        } else {
-            console.log(data);
-        }
-    }
-);
-```
----
-
-# Promises/Callbacks
-
-```javascript
-//ES6 Promise
-function makeRequest(method, url) {
-    return new Promise((resolve, reject) => {
-        let request = new XMLHttpRequest();
-
-        request.open(method, url);
-        request.onload = resolve;
-        request.onerror = reject;
-        request.send();
-    });
-}
-
-makeRequest('GET', 'https://url.json')
-.then(event => {
-    console.log(event.target.response);
-})
-.catch(err => {
-    throw new Error(err);
-});
-```
+![Fehlermeldung](error.png)
 
 
     </textarea>
