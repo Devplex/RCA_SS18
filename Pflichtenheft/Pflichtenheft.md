@@ -93,14 +93,14 @@ User Stories
 Use-Cases
 ---------
 
-![Use-Case System](UseCase-Diagramme/KBP_UseCase_System.png "Use-Case System")
+![Use-Case System](UseCases/Usecase_webanwendung.png "Use-Case System")
 
 ----------
 
 Architekturdiagramm
 -------------------
 
-![Systemarchitektur](Systemarchitektur/KBP_System_Architektur.png "Systemarchitektur")
+![Systemarchitektur](Systemarchitektur/Systemarchitektur.png "Systemarchitektur")
 
 Das obige Diagramm stellt die Systemarchitektur dar. Auf der linken Seite des Diagramms wird die Rich-Client-Webanwendung über einen Webbrowser aufgerufen. Über das Netzwerk wird eine Verbindung mit dem Webserver hergestellt. Auf der rechten Seite befinden sich beliebig viele Server welche einen Datensammel Prozess laufen lassen. Der Webserver erkennt jeden Datensammel Prozess und gibt die Daten an die Rich-Client-Webanwendung zur Darstellung weiter.
 
