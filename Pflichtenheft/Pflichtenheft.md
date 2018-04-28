@@ -109,6 +109,6 @@ Datenbankmodel
 
 ### Webserver
 
-![Datenbankmodel](ERD_Diagramme/WEB_DB.png "Datenbankmodel Web Service")
+![Datenbankmodel](Datenbankmodell/Datenbankmodell.png "Datenbankmodel Web Service")
 
 Das obige Diagramm zeigt das Schema der NoSQL Datenbank auf dem Webserver. Die Datenbank hält alte Daten zu je einem registrierten Server bereit für Analytische Zwecke und zum vergleichen der Daten über einen gewissen Zeitraum hinweg.
