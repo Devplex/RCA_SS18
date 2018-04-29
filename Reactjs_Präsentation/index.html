@@ -411,12 +411,15 @@ in JSX Elementen ist das hinzufügen neuer EventHandler einfach und
 - JavaScript Klassen können von der Oberklasse React.Component erben und haben
 damit die Eigenschaften geerbt.
 
-- Besonders interessant sind die Eigenschaften 'props' und 'state'.
+- Besonders interessant sind die Eigenschaften 'props', 'state' und 'ref'.
 
 - props sind die Eigenschaften die der Klasse als DOM Element übergeben werden.
 
 - state ist der Status einer Datei, welcher vom Programmierer festgelegt werden
 kann.
+
+- ref kann einen 'Knoten' einer React Element Klasse referenzieren und so den
+Zugriff auf zum Beispiel den Text eines inputs vereinfachen.
 
 - Jede React Component besitzt zu dem die Methode 'render()', diese wird
 aufgerufen sobald das Element im Browser aufgerufen wird.
@@ -450,6 +453,28 @@ const element = (
 )
 ReactDOM.render(element, document.getElementById('root'))
 ```
+---
+class: center, middle, inverse
+
+# Fazit
+---
+## Fazit
+
+- React.js ist ein Framework welches eine moderne Art der Programmierung des
+Frontends einer Webseite ermöglicht.
+
+- Das wirklich besondere ist die Integration von JavaScript direkt in den
+HTML-Code.
+
+- Ebenfalls erwähnenswert ist das geniale Re-Rendern, welches nur die Objekte
+neu darstellt die vom Programmierer logischer Weise auch vorgesehen waren.
+
+- Der Einstieg in das Framework ist für erfahrene Web-Programmierer kein
+Problem.
+---
+class: center, middle, inverse
+
+# Vielen Dank für eure Aufmerksamkeit!
 
     </textarea>
     <script src="https://remarkjs.com/downloads/remark-latest.min.js">
