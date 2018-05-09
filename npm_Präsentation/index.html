@@ -1,0 +1,486 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>React.js</title>
+    <meta charset="utf-8">
+    <style>
+      @import url(https://fonts.googleapis.com/css?family=Yanone+Kaffeesatz);
+      @import url(https://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic);
+      @import url(https://fonts.googleapis.com/css?family=Ubuntu+Mono:400,700,400italic);
+
+      body { font-family: 'Droid Serif'; }
+      h1, h2, h3 {
+        font-family: 'Yanone Kaffeesatz';
+        font-weight: normal;
+      }
+      a, a > code {
+        color: rgb(249, 38, 114);
+        text-decoration: none;
+      }
+      .remark-code, .remark-inline-code { font-family: 'Ubuntu Mono'; }
+      .inverse {
+        background: #272822;
+        color: #777872;
+        text-shadow: 0 0 20px #333;
+      }
+      .footnote {
+        position: absolute;
+        bottom: 3em;
+      }
+      .red { color: #fa0000; }
+    </style>
+  </head>
+  <body>
+    <textarea id="source">
+
+class: center, middle, inverse
+
+# npm
+
+## Rich-Client Applications
+### Sommersemester 2018
+
+Daniel Nagel
+
+Devin-Alexander Meier
+
+.footnote[Inspiriert durch: [React.js Tutorial](https://github.com/eggheadio-projects/the-beginner-s-guide-to-reactjs)]
+---
+
+## Was ist React.js?
+
+- React.js ist ein Framework, welches zur Ausgabe von User-Interface Komponenten
+auf Websites benutzt wird..red[*]
+
+- React.js bildet die Basis für Single Page Applications, kann jedoch auch
+mittels Node.js serverseitig (vor-)gerendert werden..red[*]
+
+.footnote[.red[*] Quelle: [wikipedia.org](https://de.wikipedia.org/wiki/React)]
+---
+class: center, middle, inverse
+# Entwickeln mit React.js
+---
+
+## React.js in das eigene Projekt einbinden
+
+- React.js kann mit CDN-Links (Content Delivery Networks) in das eigene Projekt
+eingefügt werden.
+- Beim Aufrufen der Website wird React.js vom CDN angefordert.
+
+```html
+<script src="https://unpkg.com/react@16/umd/react.development.js"></script>
+<script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+```
+---
+## Erstellen von DOM-Elementen
+
+- Mit React.js lassen sich DOM-Elemente wie Objekte behandeln.
+- Anders wie bei herkömmlichen JavaScript können dem Element mit React.js
+bereits bei der erstellung alle Attribute mitgegeben werden.
+
+```javascript
+// Hinzufügen eines Elements zu einem bestehenden.
+// Standard JavaScript
+const rootElement = document.getElementById('root')
+const element = document.createElement('div')
+element.textContent = 'Hello World'
+element.className = 'container'
+rootElement.appendChild(element)
+
+// React.js
+const rootElement = document.getElementById('root')
+const element = React.createElement(
+  'div',
+  {className: 'container'},
+  'Hello World'
+)
+ReactDOM.render(element, rootElement)
+```
+---
+## Erstellen einer Benutzeroberfläche mit JSX
+
+- Mithile von React.js JSX kann eine Benutzeroberfläche im JavaScript Code auf
+vertrautere Weise, also wie eine einfache HTML Seite, erstellt werden.
+- Damit das JSX Element nicht falsch interpretiert wird, wird babel benötigt
+(Erläuterung auf nächster Folie).
+
+```html
+<div id="root"></div>
+<script src="https://unpkg.com/react@16/umd/react.development.js"></script>
+<script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+<script src="https://unpkg.com/babel-standalone@6.26.0/babel.js"></script>
+<script type="text/babel"> <!-- Hier ist kein JavaScript! -->
+  const rootElement = document.getElementById('root')
+  const element = <div className="container">Hello World</div>
+  ReactDOM.render(element, rootElement)
+</script>
+
+```
+---
+## Was ist babel.js?
+
+- Babel ist ein JavaScript Compiler.
+- Babel kann die neueste JavaScript Version in eine ältere, Browserkompatible
+Version übersetzen.
+---
+## Unterschiede zwischen JSX und HTML
+
+- In JSX sind die Attribut Namen eines Elements anders wie bei HTML
+
+```html
+HTML
+<div class="container">Hello</div>
+
+JSX
+<div className="container">Hello</div>
+```
+
+- Ein Element in JSX kann bei der Deklaratione auch über mehrere Zeilen gehen.
+
+-  Innerhalb eines JSX Elements kann JavaScript innerhalb von geschweiften
+Klammern ausgeführt werden.
+
+```javascript
+const element = <div className="container">{console.log("Hello there")}"Hello"</div>
+```
+
+---
+## Eigene React Elemente erstellen
+
+- Eigene DOM-Elemente mit JSX zu erstellen ist keine große Sache.
+
+```javscript
+// Eine Arrow Funktion die als Argument ein Objekt erwartet.
+const rootElement = document.getElementById('root')
+const Message = props => <div>{props.msg}</div>
+const element = (
+  <Message msg='Hello World'/>
+)
+ReactDOM.render(element, rootElement)
+// Ausgabe im Browser: Hello World
+```
+
+- Der von Babel übersetzte Seitenquelltext sieht wie folgt aus:
+
+```html
+<div id="root">
+  <div>Hello World</div>
+</div>
+```
+---
+## Validieren von Eigenschaften eines eigenen React Elements.
+
+- Mithilfe der React.js Erweiterung prop-type.js können Eigenschaften validiert
+werden.
+
+```javascript
+<script src="https://unpkg.com/react@16/umd/react.development.js"></script>
+<script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+<script src="https://unpkg.com/prop-types@15.6.1/prop-types.js"></script>
+<script src="https://unpkg.com/babel-standalone@6.26.0/babel.js"></script>
+
+<div id="root"></div>
+
+<script type="text/babel">
+  function SayHello(props) {
+    return (
+      <div>
+        Hello {props.firstName} {props.lastName}!
+      </div>
+    )
+  }
+```
+
+---
+## Validieren von Eigenschaften eines eigenen React Elements.
+
+### Fortsetzung
+
+```javascript
+  SayHello.propTypes = {
+    firstName: PropTypes.string.isRequired,
+    lastName: PropTypes.string.isRequired,
+  }
+
+  ReactDOM.render(
+    <SayHello firstName={true} />,
+    document.getElementById("root")
+  )
+</script>
+```
+---
+## Validieren von Eigenschaften eines eigenen React Elements.
+
+### Fortsetzung
+
+- Folgende Fehlermeldung erscheint in der Konsole des Browsers:
+
+![Fehlermeldung](error.png)
+---
+## Ein React Element um eine Bedingung erweitern.
+
+- Ein React Elemet kann, zum Beispiel, um die Bedingung "Wenn keine Eigenschaft
+übergeben wurde dann gebe Alternative aus." erweitert werden.
+
+```html
+<!-- React.js imports -->
+<div id="root"></div>
+
+<script type="text/babel">
+  function Message({message}) {
+    return (
+      {message ? (
+        <div>{message}</div>
+      ) : (
+        <div>No Message</div>
+      )}
+    )
+  }
+
+  ReactDOM.render(
+    <Message message={null} />,
+    document.getElementById("root")
+  )
+</script>
+
+```
+---
+## Re-Render eines React Elements
+
+- React bietet die Möglichkeit ein Element neu zu laden, ohne das die Seite
+aktualisiert werden müsste.
+
+```javascript
+<!-- React.js imports -->
+<div id="root"></div>
+
+<script type="text/babel">
+  const rootElement = document.getElementById('root')
+  function tick() {
+    const time = new Date().toLocaleTimeString()
+    const element = <div>It is {time}</div>
+    ReactDOM.render(element, rootElement)
+  }
+  tick()
+  setInterval(tick, 1000)
+</script>
+```
+
+- Das ging bereits mit JavaScript. Doch das besondere daran ist das React.js
+erkennt welches Element sich ändert und nur dieses, in diesem Fall den Text mit
+der Uhrzeit, aktualisiert. Wohingegen JavaScript das gesamte DOM-Element
+aktualisiert.
+---
+## Stylen von React Elementen
+
+```html
+<!-- React.js imports -->
+<div id="root"></div>
+<!-- Style Defintionen .box{} usw. -->
+<script type="text/babel">
+  // Das React Element
+  function Box({style, size, className = '', ...rest}) {
+    const sizeClassName = size ? `box--${size}` : ''
+    return(
+      <div
+        className={`box ${className} ${sizeClassName}`}
+        style={{paddingLeft:20, ...style}}
+        {...rest}
+      />
+    )
+  }
+```
+---
+## Stylen von React Elementen
+
+### Fortsetzung
+
+```javascript
+const element = (
+  <div>
+    <Box
+      size="small"
+      style={{backgroundColor: 'lightblue'}}
+    >
+      small box
+    </Box>
+    <Box
+      size="large"
+      style={{backgroundColor: 'orange'}}
+    >
+      large box
+    </Box>
+  </div>
+)
+
+ReactDOM.render(element, document.getElementById('root'))
+```
+---
+## Event Handler mit React
+
+- Durch das interpretieren von JavaScript Code innerhalb geschweifter Klammern
+in JSX Elementen ist das hinzufügen neuer EventHandler einfach und
+übersichtlich.
+
+```html
+<!-- React.js imports -->
+<div id="root"></div>
+
+<script type="text/babel">
+  const state = {eventCount: 0, username: ''}
+```
+---
+## Event Handler mit React
+
+### Fortsetzung
+
+```javascript
+  // Das Web UI
+  function App() {
+    return (
+      <div>
+        <p>
+          There have been {state.eventCount} events
+        </p>
+        <p>
+          <button // Bei einem Click auf den Button wird die Funktion
+                  // increment aufgerufen
+            onClick={increment}
+          >
+            x
+          </button>
+        </p>
+        <p>You typed: {state.username}</p>
+
+```
+---
+## Event Handler mit React
+
+### Fortsetzung
+
+```javascript
+        <p>
+          <input // Bei Änderungen wird die Funktion updateUsername
+                // aufgerufen.
+            onChange={updateUsername}
+          />
+        </p>
+      </div>
+    )
+  }
+
+  function increment() {
+    setState({
+      eventCount: state.eventCount + 1
+    })
+  }
+
+  function updateUsername(event) {
+    setState({
+        username:event.target.value
+    })
+  }
+
+```
+---
+## Event Handler mit React
+
+### Fortsetzung
+
+```javascript
+  // Wenn ein Event ausgelöst wurde und die der Status eines Elements
+  // Durch einer der Funktionen mit setState geändert wird, wird die
+  // App neu gerendert.
+  function setState(newState) {
+    Object.assign(state, newState)
+    renderApp()
+  }
+
+  function renderApp() {
+    ReactDOM.render(
+      <App />,
+      document.getElementById('root')
+    )
+  }
+  renderApp()
+</script>
+```
+---
+## React Elemente als Klassen
+
+- JavaScript Klassen können von der Oberklasse React.Component erben und haben
+damit die Eigenschaften geerbt.
+
+- Besonders interessant sind die Eigenschaften 'props', 'state' und 'ref'.
+
+- props sind die Eigenschaften die der Klasse als DOM Element übergeben werden.
+
+- state ist der Status einer Datei, welcher vom Programmierer festgelegt werden
+kann.
+
+- ref kann einen 'Knoten' einer React Element Klasse referenzieren und so den
+Zugriff auf zum Beispiel den Text eines inputs vereinfachen.
+
+- Jede React Component besitzt zu dem die Methode 'render()', diese wird
+aufgerufen sobald das Element im Browser aufgerufen wird.
+
+- Dazu ein Beispiel auf der nächsten Folie.
+---
+## React Elemente als Klassen
+
+### Fortsetzung
+
+```javascript
+// React.js imports
+class Counter extends React.Component {
+  constructor(...args) {
+    super(...args)
+    // Initialer State der Klasse
+    this.state = {count: 0}
+  }
+  // Wird bei Aufruf des DOM Elements ausgeführt.
+  render() {
+    return(
+      <button onClick={() => this.setState(({count}) => ({count: count + 1}))}>
+        {this.state.count}
+      </button>
+    )
+  }
+}
+
+const element = (
+  <Counter />
+)
+ReactDOM.render(element, document.getElementById('root'))
+```
+---
+class: center, middle, inverse
+
+# Fazit
+---
+## Fazit
+
+- React.js ist ein Framework welches eine moderne Art der Programmierung des
+Frontends einer Webseite ermöglicht.
+
+- Das wirklich besondere ist die Integration von JavaScript direkt in den
+HTML-Code.
+
+- Ebenfalls erwähnenswert ist das geniale Re-Rendern, welches nur die Objekte
+neu darstellt die vom Programmierer logischer Weise auch vorgesehen waren.
+
+- Der Einstieg in das Framework ist für erfahrene Web-Programmierer kein
+Problem.
+---
+class: center, middle, inverse
+
+# Vielen Dank für eure Aufmerksamkeit!
+
+    </textarea>
+    <script src="https://remarkjs.com/downloads/remark-latest.min.js">
+    </script>
+    <script>
+      var slideshow = remark.create();
+    </script>
+  </body>
+</html>
