@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>React.js</title>
+    <title>npm</title>
     <meta charset="utf-8">
     <style>
       @import url(https://fonts.googleapis.com/css?family=Yanone+Kaffeesatz);
@@ -44,58 +44,53 @@ Daniel Nagel
 
 Devin-Alexander Meier
 
-.footnote[Inspiriert durch: [React.js Tutorial](https://github.com/eggheadio-projects/the-beginner-s-guide-to-reactjs)]
+.footnote[Inspiriert durch: [npm Beginner's Guide](https://www.sitepoint.com/beginners-guide-node-package-manager/)]
 ---
 
-## Was ist React.js?
+## Was ist npm?
 
-- React.js ist ein Framework, welches zur Ausgabe von User-Interface Komponenten
-auf Websites benutzt wird..red[*]
+- npm ist ein Pakete-Manager für JavaScript, es ist der standard
+Pakete-Manager für Node.js[*]
 
-- React.js bildet die Basis für Single Page Applications, kann jedoch auch
-mittels Node.js serverseitig (vor-)gerendert werden..red[*]
+- npm ist komplett in JavaScript geschrieben und wurde von Isaac Z. Schleuter
+entwickelt.[*]
 
-.footnote[.red[*] Quelle: [wikipedia.org](https://de.wikipedia.org/wiki/React)]
+.footnote[.red[*] Quelle: [wikipedia.org](https://en.wikipedia.org/wiki/Npm_(software))]
 ---
 class: center, middle, inverse
-# Entwickeln mit React.js
+# Der Node Pakete Manager
 ---
 
-## React.js in das eigene Projekt einbinden
+## Node.js installieren
 
-- React.js kann mit CDN-Links (Content Delivery Networks) in das eigene Projekt
-eingefügt werden.
-- Beim Aufrufen der Website wird React.js vom CDN angefordert.
+- gewünschte Node.js Version von der [Download-Seite](https://nodejs.org/en/download/)
+herunterladen
 
-```html
-<script src="https://unpkg.com/react@16/umd/react.development.js"></script>
-<script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+- Über die Befehle
+```bash
+$ which node
+$ which npm
 ```
+wird der Installationspfad von node.js und npm angezeigt
+und mit
+```bash
+$ node --version
+$ npm --version
+```
+kann man die installierte Version sehen
 ---
-## Erstellen von DOM-Elementen
+## Node Package Modules
 
-- Mit React.js lassen sich DOM-Elemente wie Objekte behandeln.
-- Anders wie bei herkömmlichen JavaScript können dem Element mit React.js
-bereits bei der erstellung alle Attribute mitgegeben werden.
+- npm kann Pakete Lokal und Global installieren
 
-```javascript
-// Hinzufügen eines Elements zu einem bestehenden.
-// Standard JavaScript
-const rootElement = document.getElementById('root')
-const element = document.createElement('div')
-element.textContent = 'Hello World'
-element.className = 'container'
-rootElement.appendChild(element)
+- Im Lokalen Modus wird das Paket im Elternverzeichnis des
+Arbeitsverzeichnisses in node_modules gepackt, dieses Verzeichnis gehört
+dem aktuellem Benutzer
 
-// React.js
-const rootElement = document.getElementById('root')
-const element = React.createElement(
-  'div',
-  {className: 'container'},
-  'Hello World'
-)
-ReactDOM.render(element, rootElement)
-```
+- Im Globalen Modus werden Pakete unter {prefix}/lib/node_modules/ installiert,
+hierbei steht {prefix} meist für /usr/ oder /usr/local, d.h. um Pakete Global
+zu installieren muss man sudo verwenden
+
 ---
 ## Erstellen einer Benutzeroberfläche mit JSX
 
