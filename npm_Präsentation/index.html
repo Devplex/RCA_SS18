@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>npm</title>
+    <title>npm & Webpack</title>
     <meta charset="utf-8">
     <style>
       @import url(https://fonts.googleapis.com/css?family=Yanone+Kaffeesatz);
@@ -50,12 +50,12 @@ Devin-Alexander Meier
 ## Was ist npm?
 
 - npm ist ein Pakete-Manager für JavaScript, es ist der standard
-Pakete-Manager für Node.js[*]
+Pakete-Manager für Node.js .red[*]
 
 - npm ist komplett in JavaScript geschrieben und wurde von Isaac Z. Schleuter
-entwickelt.[*]
+entwickelt. .red[*]
 
-.footnote[.red[*] Quelle: [wikipedia.org](https://en.wikipedia.org/wiki/Npm_(software))]
+.footnote[.red[*] Quelle: [wikipedia.org](https://en.wikipedia.org/wiki/Npm_(software)]
 ---
 class: center, middle, inverse
 # Der Node Pakete Manager
@@ -81,26 +81,156 @@ kann man die installierte Version sehen
 ---
 ## Node Package Modules
 
-- npm kann Pakete Lokal und Global installieren
+- npm kann Pakete lokal und global installieren
 
-- Im Lokalen Modus wird das Paket im Elternverzeichnis des
-Arbeitsverzeichnisses in node_modules gepackt, dieses Verzeichnis gehört
+- Im lokalen Modus wird das Paket im Elternverzeichnis des
+Arbeitsverzeichnisses in "node_modules" gepackt, dieses Verzeichnis gehört
 dem aktuellem Benutzer
 
-- Im Globalen Modus werden Pakete unter {prefix}/lib/node_modules/ installiert,
-hierbei steht {prefix} meist für /usr/ oder /usr/local, d.h. um Pakete Global
-zu installieren muss man sudo verwenden
+- Im globalen Modus werden Pakete unter {prefix}/lib/node_modules/ installiert,
+hierbei steht {prefix} meist für /usr/ oder /usr/local, d.h. um Pakete global
+zu installieren muss "sudo" verwenden werden
 
 ---
 
-## 
+## Pakete im globalen Modus installieren
 
+- Pakete werden global installiert mit der "--global" flag oder kurz "-g"
+```bash
+$ npm install <package> --global
+```
+
+## globale Pakete auflisten
+
+- Mit "npm list" können alle global installierten Pakete aufgelistet werden
+```bash
+$ npm list --global
+```
+- diese Ausgabe erzeugt viel Text der nicht benötigt wird. Mit der
+"--depth=0" flag kann die Ausgabe auf installierte Pakte mit deren
+Versionsnummer reduziert werden
+```bash
+$ npm list -g --depth=0
+```
+---
+
+## Pakete im lokalen Modus installieren
+
+- Wenn Pakete lokal installiert werden, wird meist eine "package.json" Datei
+benutzt, diese kann mit "npm init" erstellen werden
+```bash
+$ npm init
+```
+
+- Nun kann ein Paket installiert werden
+```bash
+$ npm install <package>
+```
+
+- In den "dependencies" der package.json steht nun das installierte Paket
+```json
+{
+  ...
+  "dependencies": {
+    "<package>": "^1.8.3"
+  }
+}
+```
+---
+
+## Loakle Pakete deinstallieren
+
+- Da npm ein Pakete-Manager ist, müssen Pakte wieder deinstalliert werden können.
+Dazu wird "npm uninstall" benutzt
+```bash
+$ npm uninstall <package>
+```
+
+## Installieren einer spezifischen Paket Version
+
+- Mit dem "@" Zeichen kann ein Paket in der gewünschten Version installiert
+werden
+```bash
+$ npm install <package>@<versionnumber>
+```
+
+---
+
+## Ein Paket Updaten
+
+- Mit "npm outdated" kann überprüft werden welches Paket nicht mehr up-to-date
+ist
+```bash
+$ npm outdated
+```
+
+- Nun kann dieses Paket mit "npm update" geupdatet werden
+```bash
+$ npm update <package>
+```
+
+- Seit npm v5 gibt es eine "package-lock.json" Datei in der die Dependencies
+eingeschlossen werden, so dass auf allen Maschinen die gleichen Dependencies und
+Versionen sind, damit dies nicht zukomplikation führt.
+---
+
+## Nach Paketen suchen
+
+- Mit "npm search" können Pakete gesucht werden
+```bash
+$ npm search <package>
+```
+
+## Erneut installieren von Projekt Dependencies
+
+- Wenn zb der Source-code eines Projektes auf eine andere Maschine kopiert wurde
+und der "node_modules" Ordner gelöscht wird, können die Dependencies über
+"npm install" wieder installiert werden
+```bash
+$ npm install
+```
+---
+
+## Managen des Caches
+
+- Wenn npm ein Paket installiert, speichert es eine Kopie davon im Cache.
+Wenn das nächste mal dieses Paket installiert wird, muss npm nicht ins Internet.
+Die Kopien sind gecached im .npm Ordner
+```bash
+$ ls ~/.npm
+```
+
+- Der Cache füllt sich über die Zeit und es ist empfohlen diesen gelegentlich
+mit "npm cache clean" zu leeren
+```bash
+$ npm cache clean
+```
+---
+
+## Häufig benutzte Kommandos
+
+* npm i <package> – lokales Paket installieren
+* npm i -g <package> – globales Paket installieren
+* npm un <package> – lokales Paket deinstallieren
+* npm up – npm Pakete updaten
+* npm t – Tests ausführen
+* npm ls – Liste aller installiereten Module
+* npm ll or npm la – Liste aller installiereten Module mit mehr Informationen
 ---
 class: center, middle, inverse
 
-# Fazit
+# Webpack
 ---
-## Fazit
+
+## Was ist Webpack
+
+- Webpack ist ein Modul Bündler für JavaScript, deswegen ist es eins der
+wichtigsten Tools für Webentwicklung. Es kann lernen alle Front-end assets wie
+HTML, CSS und sogar Bilder zu transformieren. Außerdem gibt es mehr Kontrolle
+über die Anzahl der HTTP Anfragen die eine App macht. Mit Webpack können
+auch einfach Pakete von npm benutzt werden.
+
+- Ein Tutorial zu Setup und Konfiguration von Webpack [hier](https://www.sitepoint.com/beginners-guide-webpack-module-bundling/)
 
 ---
 class: center, middle, inverse
