@@ -27,7 +27,7 @@ Projekt Repo für das Modul Rich-Client-Application im Sommersemester 2018.
 
 ### Softwareprojekt
 
-* Zum Softwareprojekt (Infinite Monitoring Tool)
+* [Zum Softwareprojekt (Infinite Monitoring Tool)](https://github.com/danisenpai/Infinite-Monitoring-Tool/tree/master)
 
 
 ### Projektpräsentation
