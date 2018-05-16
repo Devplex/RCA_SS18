@@ -22,7 +22,7 @@ Projekt Repo für das Modul Rich-Client-Application im Sommersemester 2018.
 
 ### Pflichtenheft
 
-* Zum Pflichtenheft
+* [Zum Pflichtenheft](https://github.com/Devplex/RCA_SS18/blob/master/Pflichtenheft/Pflichtenheft.md)
 
 
 ### Softwareprojekt
