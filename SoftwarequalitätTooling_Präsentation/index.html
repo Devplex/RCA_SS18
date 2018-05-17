@@ -53,17 +53,77 @@ class: center, middle, inverse
 
 ## Warum Testen?
 
-- Durch Tests kann sichergestellt werden, dass der geschreibene Code auch tut was von ihm erwartet wird und dies auch 
-immer noch tut wenn der Code geändert wird damit am Ende ein funktionierendes Produkt besteht
+- Durch Tests kann sichergestellt werden, dass der geschreibene Code auch tut
+was von ihm erwartet wird und dies auch immer noch tut, wenn der Code geändert
+wird, damit am Ende ein funktionierendes Produkt besteht
 
-- Es wird ein Test geschrieben der die erwartete funktionalität unter definierten Umständen definiert. Dieser Test durchläuft den Code
-und prüft die Ergebnisse. Ist ein Ergebniss flasch wird eine Warnung ausgegeben. So kann der Code getestet werden bis keine Warnungen mehr auftreten
+- Es wird ein Test geschrieben der die erwartete Funktionalität unter
+definierten Umständen definiert. Dieser Test durchläuft den Code und prüft die
+Ergebnisse. Ist ein Ergebniss flasch, wird eine Warnung ausgegeben. So kann der
+Code getestet werden bis keine Warnungen mehr auftreten
 
 - Verschiedene Tests
-	* **Unit Tests** validieren die Funktionalität von isoliertem Code
-	* **Integartions Tests** überprüfen den Datenfluss und die Interaktionen der Komponenten
-	* **Funktionale Tests** sehen sich das Verhalten der gesamten Applikation an
+	- **Unit Tests** validieren die Funktionalität von isoliertem Code
+	- **Integartions Tests** überprüfen den Datenfluss und die Interaktionen der Komponenten
+	- **Funktionale Tests** sehen sich das Verhalten der gesamten Applikation an
+---
 
+## Was ist funktionale Programmierung?
+
+- Funktionale Programmierung kann aus drei verschiedenen Richtungen angenähert
+werden. Der Begriff "funktionale Programmierung" kann
+
+  - für das *Funktionale Paradigma*
+    stehen, was Minimalanforderung bedeutet
+  - für das *Programmieren mit funktionalen Sprachen* stehen
+  - für *"typisch funktionale" Programmierkonzepte* stehen
+---
+
+## Testen von funktionalem JavaScript
+
+- Zur besseren verdeutlichung ein kleiner Test. Dafür kann ein extra Dokument
+angelegt werden oder im script-Tag auf der Seite. Für den Test kann die
+**describe** Methode, aus der Jasmine Bibliothek benutzen um einen Test für einen
+Funktion zuschreiben, welche noch nicht geschrieben wurde
+
+- Die zu testende Funktion heißt **isPalindrome** und returnt true wenn der
+übergebene String ein Palindrome ist, false wenn nicht
+```javascript
+describe("isPalindrome", () => {
+  it("returns true wenn String ein Palindrome ist", () => {
+    expect(isPalindrome("abba")).toEqual(true);
+  });
+});
+```
+- Wenn dieser Test in eine Seite eingebunden wird und diese dann im Browser
+aufgerufen wird, erscheint einen Jasmine Berichtseite mit einem error. D.h.
+der Test ist durchgelaufen und hat einen error da es die Funktion noch nicht
+gibt
+
+---
+
+- Nun wird die Funktion in JavaScript geschrieben
+```javascript
+const isPalindrome = (str) => {
+  return str
+    .split("")
+    .reverse()
+    .join("") === str;
+};
+```
+
+- Wenn die Seite nun erneut geladen wird, ist der Test bestanden. Für einen
+klareren Test kann noch eine Behauptung zum **describe** hinzugefügt werden
+```javascript
+describe("isPalindrome", () => {
+  it("returns true wenn String ein Palindrome ist", () => {
+    expect(isPalindrome("abba")).toEqual(true);
+  });
+  it("returns false wenn String kein Palindrome ist", () => {
+    expect(isPalindrome("Bubba")).toEqual(false);
+  });
+});
+```
 ---
 
 class: center, middle, inverse
@@ -72,6 +132,86 @@ class: center, middle, inverse
 
 .footnote[Inspiriert durch: [NodeJS testen](https://scotch.io/tutorials/how-to-test-nodejs-apps-using-mocha-chai-and-sinonjs)]
 ---
+
+## NodeJS testen
+
+- Wenn keine Tests vorhanden sind, muss bei jeder Änderung manuell geschaut
+werden ob die Applikation noch richtig funktioniert. Mit automatischen Tests muss nicht
+immer überprüft werden. Für NodeJS gibt es verschiedene Tools mit denen
+getestet werden kann. Im folgenden werden die Tools **Mocha**,
+**Chai** und **SinonJS** kurz erklärt.
+
+---
+
+## Mocha
+
+- Mocha ist ein "Tool ausführer", d.h. es führt Tests aus. Die Tests an sich
+sind nicht in Mocha geschrieben.
+
+- Mocha kann über npm installiert werden
+```bash
+npm install -g mocha
+```
+
+- Erstellen eines Ordners für die Applikation
+```bash
+mkdir testing-async-code && cd testing-async-code
+npm init
+npm install --save mocha
+mkdir tests
+```
+---
+- Nun kann ein simpler Test geschrieben werden
+```javascript
+const assert = require("assert");
+describe("smoke test", () => {
+  it("checks equality", () => {
+    assert.equal(true, true);
+  });
+});
+```
+
+- Zum testen der geschrieben Tests wird **mocha** benutzt
+```bash
+mocha tests/
+```
+---
+
+## Chai
+
+- Chai ist eine Assertion Bibliothek. Es tut das gleiche wie die Assert
+Bibliothek von NodeJS aber mit besser Lesbarkeit.
+
+- Chai kann über npm installiert werden
+```bash
+npm i --save-dev chai
+```
+
+- Jetzt kann ein Test geschrieben werden
+```javascript
+const chai = require("chai");
+const expect = chai.expect;
+describe("smoke test", () => {
+  it("checks equality", () => {
+    expect(true).to.be.true;
+  });
+});
+```
+---
+
+## SinonJS
+
+- SinonJS bietet standalone Tests Spies, Stubs, Mocks
+
+  - Spies: Erstellt gefälschte Funktionen welche verfolgt werden können.
+  D.h. es ist bekannt wie oft oder wann die Funktion ausgeführt wurde.
+  Spies kann auch für existierende Funktionen verwendet werden.
+
+  - Stubs: Kann zum ersetzen von Funktionen verwendet werden. Dadurch können
+  mehrere verschiedene Szenarien getestet werden.
+
+  - Mocks: Gefälschte Methoden die vorprogrammiertes Verhalten und
+  vorprogrammierte Erwartungen haben.
 
 ---
 
@@ -82,14 +222,31 @@ class: center, middle, inverse
 .footnote[Inspiriert durch: [Snapshot testen](https://daveceddia.com/snapshot-testing-react-with-jest/)]
 ---
 
+## Was ist ein Snapshot Test?
+
+- Ein Snapshot Test stellt sicher, dass eine Funktionalität genauso funktioniert
+wie als ein Snapshot erstellt wurde. Es ist als würde ein Bild von der
+Applikation in einem bestimmten Zustand gemacht werden und dadurch automatisch
+bestätigt werden das sich nichts verändert hat. Aber beim Snapshot testen werden
+keinerlei Bilder oder Screenshots benutzt. Dieser Test ist rein textuell.
+
 ---
-class: center, middle, inverse
-
-# Fazit
----
-## Fazit
-
-
+- Ein Beispiel dafür:
+```html
+<ul class="todo-list">
+  <li class="todo-item">A New Hope</li>
+  <li class="todo-item">The Empire Strikes Back</li>
+  <li class="todo-item">Return of the Jedi</li>
+</ul>
+```
+Sobald dies funktioniert wird ein manueller "Snapshot" gemacht indem die HTML
+Darstellung kopiert und in eine neue Datei eingefügt wird. So kann später die
+Komponente mit den gleichen Daten gerendert werden und gegen den Snapshot
+verglichen werden. Dies ist das Grundprinzip von Snapshot Tests. Das erste Mal
+wenn eine Appklikation gestartet wird, wird ein textueller Snapshot der Komponente
+gespeichert. Wird diese Komponente nun wieder gestartet, wird das gerenderte gegen
+den Snapshot verglichen. Sollten sich die beiden unterscheiden ist der Test
+fehlgeschlagen.
 ---
 class: center, middle, inverse
 
