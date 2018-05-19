@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?><project name="Untitled Gantt Project" company="" webLink="http://" view-date="2018-05-07" view-index="0" gantt-divider-location="414" resource-divider-location="300" version="2.8.7" locale="de_DE">
+    <description/>
+    <view zooming-state="default:5" id="gantt-chart">
+        <field id="tpd3" name="Vorgang" width="380" order="0"/>
+        <field id="tpd4" name="Anfang" width="15" order="1"/>
+        <field id="tpd5" name="Ende" width="15" order="2"/>
+        <option id="color.recent"><![CDATA[#660000 #990000 #e1e1e1 #cc0000 #ff0000 #ff3333 #ff6666 #663300 #cc3300 #ff3300]]></option>
+    </view>
+    <view id="resource-table">
+        <field id="0" name="Ressource" width="210" order="0"/>
+        <field id="1" name="Rolle" width="86" order="1"/>
+    </view>
+    <!-- -->
+    <calendars>
+        <day-types>
+            <day-type id="0"/>
+            <day-type id="1"/>
+            <default-week id="1" name="default" sun="1" mon="0" tue="0" wed="0" thu="0" fri="0" sat="1"/>
+            <only-show-weekends value="false"/>
+            <overriden-day-types/>
+            <days/>
+        </day-types>
+    </calendars>
+    <tasks empty-milestones="true">
+        <taskproperties>
+            <taskproperty id="tpd0" name="type" type="default" valuetype="icon"/>
+            <taskproperty id="tpd1" name="priority" type="default" valuetype="icon"/>
+            <taskproperty id="tpd2" name="info" type="default" valuetype="icon"/>
+            <taskproperty id="tpd3" name="name" type="default" valuetype="text"/>
+            <taskproperty id="tpd4" name="begindate" type="default" valuetype="date"/>
+            <taskproperty id="tpd5" name="enddate" type="default" valuetype="date"/>
+            <taskproperty id="tpd6" name="duration" type="default" valuetype="int"/>
+            <taskproperty id="tpd7" name="completion" type="default" valuetype="int"/>
+            <taskproperty id="tpd8" name="coordinator" type="default" valuetype="text"/>
+            <taskproperty id="tpd9" name="predecessorsr" type="default" valuetype="text"/>
+        </taskproperties>
+        <task id="0" name="Fertigstellen des Pflichtenheftes" color="#ffccff" meeting="false" start="2018-05-11" duration="14" complete="0" thirdDate="2018-05-11" thirdDate-constraint="0" expand="true">
+            <notes><![CDATA[Das Pflichtenheft beschreibt in konkreter Form, wie der Auftragnehmer die Anforderungen des Auftraggebers zu lösen gedenkt – das sogenannte wie und womit.]]></notes>
+            <depend id="5" type="2" difference="0" hardness="Strong"/>
+            <task id="3" name="Beschreibung und Ziel der Software." color="#ccccff" meeting="false" start="2018-05-11" duration="5" complete="0" thirdDate="2018-05-11" thirdDate-constraint="0" expand="true">
+                <notes><![CDATA[Beschreibender Software, der Prodkutname und die Vision.
+Festelegen der Ziele der Software: 
+- Anwendungsbereiche, Motivation, Umfang, Marktanforderungen,         Alleinstellungsmerkmale
+- Informationen zu Zielbenutzergruppen und deren Merkmale (Bildung,   Erfahrung, Sachkenntnis)
+- Abgrenzung (Was ist das Softwaresystem nicht)
+]]></notes>
+                <depend id="14" type="2" difference="0" hardness="Strong"/>
+            </task>
+            <task id="14" name="Festelegen der Anforderungen." color="#9999ff" meeting="false" start="2018-05-18" duration="3" complete="0" thirdDate="2018-05-18" thirdDate-constraint="0" expand="true">
+                <depend id="18" type="2" difference="0" hardness="Strong"/>
+            </task>
+            <task id="18" name="Technische Beschreibung erstellen." color="#6666ff" meeting="false" start="2018-05-23" duration="3" complete="0" thirdDate="2018-05-23" thirdDate-constraint="0" expand="true">
+                <depend id="23" type="2" difference="0" hardness="Strong"/>
+            </task>
+            <task id="23" name="Projektorganisation." color="#6600ff" meeting="false" start="2018-05-28" duration="3" complete="0" thirdDate="2018-05-28" thirdDate-constraint="0" expand="true">
+                <notes><![CDATA[Annahmen.
+Verantwortlichkeiten festlegen.]]></notes>
+            </task>
+        </task>
+        <task id="5" name="Pflichtenheft erstellt." color="#6600cc" meeting="true" start="2018-05-31" duration="0" complete="0" thirdDate="2018-05-31" thirdDate-constraint="0" expand="true"/>
+        <task id="34" name="Software implementierung." color="#ffffcc" meeting="false" start="2018-06-01" duration="26" complete="0" thirdDate="2018-05-25" thirdDate-constraint="0" expand="true">
+            <depend id="31" type="2" difference="0" hardness="Strong"/>
+            <task id="36" name="Implementieren des Data-Scrapers." color="#ffcccc" meeting="false" start="2018-06-01" duration="16" complete="0" thirdDate="2018-05-21" thirdDate-constraint="0" expand="true">
+                <notes><![CDATA[Der Datensammler ist eine Anwendung welche auf einem zu überwachenden System zum Einsatz kommt. Dieser sammelt alle Relevanten Daten und sendet diese in regelmäßigen Zeitabständen an den Webserver.]]></notes>
+                <depend id="41" type="2" difference="0" hardness="Strong"/>
+                <task id="43" name="Implementieren der Socket Verbindungen." color="#ff9999" meeting="false" start="2018-06-01" duration="3" complete="0" thirdDate="2018-06-01" thirdDate-constraint="0" expand="true">
+                    <depend id="45" type="2" difference="0" hardness="Strong"/>
+                </task>
+                <task id="45" name="Testen der Socketverbindungen" color="#ff6666" meeting="false" start="2018-06-06" duration="3" complete="0" thirdDate="2018-06-06" thirdDate-constraint="0" expand="true"/>
+                <task id="51" name="Implementieren der Ressourcen überwachung" color="#ff3333" meeting="false" start="2018-06-11" duration="3" complete="0" thirdDate="2018-06-11" thirdDate-constraint="0" expand="true">
+                    <depend id="52" type="2" difference="0" hardness="Strong"/>
+                </task>
+                <task id="52" name="Testen der Ressourcenüberwachung." color="#ff3300" meeting="false" start="2018-06-14" duration="2" complete="0" thirdDate="2018-06-14" thirdDate-constraint="0" expand="true"/>
+                <task id="53" name="Implementieren der Erweiterbarkeit" color="#cc3300" meeting="false" start="2018-06-18" duration="3" complete="0" thirdDate="2018-05-22" thirdDate-constraint="0" expand="true">
+                    <depend id="54" type="2" difference="0" hardness="Strong"/>
+                </task>
+                <task id="54" name="Testen der Erweiterbarkeit." color="#663300" meeting="false" start="2018-06-21" duration="2" complete="0" thirdDate="2018-06-21" thirdDate-constraint="0" expand="true"/>
+            </task>
+            <task id="38" name="Implementieren des Webservers." color="#ff9999" meeting="false" start="2018-06-11" duration="10" complete="0" thirdDate="2018-06-01" thirdDate-constraint="0" expand="true">
+                <depend id="41" type="2" difference="0" hardness="Strong"/>
+                <task id="55" name="Implementieren der Socketverbindungen" color="#ff6666" meeting="false" start="2018-06-11" duration="5" complete="0" thirdDate="2018-06-01" thirdDate-constraint="0" expand="true">
+                    <depend id="56" type="2" difference="0" hardness="Strong"/>
+                </task>
+                <task id="56" name="Testen der Socketverbindungen" color="#ff3333" meeting="false" start="2018-06-18" duration="5" complete="0" thirdDate="2018-06-18" thirdDate-constraint="0" expand="true"/>
+            </task>
+            <task id="41" name="Implementieren der Weboberfläche." color="#ff6666" meeting="false" start="2018-06-25" duration="10" complete="0" thirdDate="2018-06-25" thirdDate-constraint="0" expand="true">
+                <task id="57" name="Implementieren der Darstellung der Daten" color="#ff0000" meeting="false" start="2018-06-25" duration="3" complete="0" thirdDate="2018-06-25" thirdDate-constraint="0" expand="true">
+                    <depend id="58" type="2" difference="0" hardness="Strong"/>
+                </task>
+                <task id="58" name="Testen der Darstellung der Daten" color="#cc0000" meeting="false" start="2018-06-28" duration="2" complete="0" thirdDate="2018-06-28" thirdDate-constraint="0" expand="true"/>
+                <task id="59" name="Implentieren der Erweiterbarkeit" color="#990000" meeting="false" start="2018-07-02" duration="3" complete="0" thirdDate="2018-07-02" thirdDate-constraint="0" expand="true">
+                    <depend id="60" type="2" difference="0" hardness="Strong"/>
+                </task>
+                <task id="60" name="Testen der Erweiterbarkeit" color="#660000" meeting="false" start="2018-07-05" duration="2" complete="0" thirdDate="2018-07-05" thirdDate-constraint="0" expand="true"/>
+            </task>
+        </task>
+        <task id="31" name="Deadline der Softwareerstellung" color="#ff0033" meeting="true" start="2018-07-09" duration="0" complete="0" thirdDate="2018-07-09" thirdDate-constraint="0" priority="4" expand="true"/>
+    </tasks>
+    <resources/>
+    <allocations/>
+    <vacations/>
+    <previous/>
+    <roles roleset-name="Default"/>
+</project>
