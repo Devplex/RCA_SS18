@@ -136,16 +136,37 @@ Das IMT ist kein Ressourcenmonitor für einen Client. Es wird vorausgesetzt, das
 * Daten sollen in normalisierter Form weitergegeben werden.
 
 ### 2.2.1 Rahmenbedingungen
-    - Normen, Standards, Protokolle, Hardware, externe Vorgaben
+
+#### Standards
+* Der verwendete Standard des Softwaresystems sind Sockets. Mithilfe der Sockets wird ein durchgehende Verbindung aufrecht erhalten. Datensammler, sowie Webanwendung sind üer einen Socket mit dem Webserver verbunden.
+
+#### Protokolle
+* Das für  die Datenübertragung Verwendete Protokoll ist TCP (Transmission Control Protocol)
+
+#### Hardware
+* Die minimale Hardware Anforderungen für das Softwaresystem ist ein einziger Computer. Auf dem Computer würde ein Datensammler sowie der Webserver laufen. Der Datensammler sendet die Daten an den Webserver. Der Webserver sendet dann die Daten an die Weboberfläche die dann in einem Browser aufgerufen werden kann.
+* Geplant ist ein Webserver welcher eine große Menge von Socketverbindungen verarbeiten kann. Es soll keine Beschränkung in der Menge von zu überwachenden Servern geben. Genau so soll es keine Beschränkung in der Anzahl der Clients geben die eine Webanwendung anfordern.
 
 ### 2.2.2 Betriebsbedingungen
 * Das System soll mit den neuesten Technologien betrieben werden:
   * Node.js im Backend.
   * React.js im Frontend.
-  * JEST und Jasmine zum Testen.
+  * JEST, Jasmine, Mocha und Chai zum Testen.
 
 ### 2.2.3 Qualitätsmerkmale
-    - Externe Qualitätsanforderungen (z.B. Performance, Sicherheit, Zuverlässigkeit, Benutzerfreundlichkeit)
+
+#### Performance
+* Das Softwaresystem hat eine hohe Qualitätsanforderung an die Performance. Es sollen, wie der Name schon sagt, unendlich viele Computersysteme überwacht werden können.
+
+#### Sicherheit
+* Je nach Art der Daten steigt die Anforderung an die Sicherheit. Daher sollten alle Teile des Software Systems ihre Übertragung mit SSL verschlüßeln können.
+
+#### Zuverlässigkeit
+* Da die überwachung der Systeme nicht für den Alltäglichen Betrieb benötigt wird, kann das System ausfallen, ohne das ein großer Schaden entsteht.
+
+#### Benutzerfreundlichkeit
+* Da die Webanwendung eine große Menge an Daten darstellt, sollten diese möglichst effizient und übersichtlich dargestellt werden.
+* Die Erweiterbarkeit sollte möglichst Individuell sein, daher liegt der Fokus hier auf den Umfang der Möglichen Erweiterbarkeit und weniger auf der Benutzerfreundlichkeit.
 
 ## 2.3 Graphische Benutzerschnittstelle
 ![Rich-Client-Webanwendung](rich-client-app.png "Rich-Client-Webanwendung")
@@ -187,23 +208,43 @@ Das IMT ist kein Ressourcenmonitor für einen Client. Es wird vorausgesetzt, das
 # 3 Technische Beschreibung
 
 ## 3.1 Systemübersicht
-    - Systemarchitekturdiagramm ("Box-And-Arrow" Diagramm)
-    - Schnittstellenbeschreibung
-    - Kommunikationsprotokolle, Datenformate
-
-## 3.2 Softwarearchitektur
-    - Darstellung von Softwarebausteinen (Module, Schichten, Komponenten)
-
 ![Systemarchitektur](Systemarchitektur/Systemarchitektur.png "Systemarchitektur")
 
-Das obige Diagramm stellt die Systemarchitektur dar. Auf der linken Seite des Diagramms wird die Rich-Client-Webanwendung über einen Webbrowser aufgerufen. Über das Netzwerk wird eine Verbindung mit dem Webserver hergestellt. Auf der rechten Seite befinden sich beliebig viele Server welche einen Datensammel Prozess laufen lassen. Der Webserver erkennt jeden Datensammel Prozess und gibt die Daten an die Rich-Client-Webanwendung zur Darstellung weiter.
+Das obige Diagramm stellt die Systemarchitektur dar. Auf der linken Seite des Diagramms wird die Rich-Client-Webanwendung über einen Webbrowser aufgerufen. Es wird ein Socket zum Webserver geöffnet. Dieser sendet, per HTTP, durchgehend die neuesten Daten der Datensammler an die Webanwendung, ohne das die Webanwendung neue Daten anfordern muss. Auf der rechten Seite befinden sich beliebig viele Server welche einen Datensammler Prozess laufen lassen. Diese erstellen ebenfalls einen Socket zum Webserver. Der Datensammler sendet, per TCP, durchgehend neue Daten an den Webserver. Dieser erkennt jeden Datensammler als neues Computersystem und gibt die Daten, über den offenen Socket an die Rich-Client-Webanwendung zur Darstellung weiter.
+
+## 3.2 Softwarearchitektur
+
+### Komponenten
+
+#### Rich-Client-Webanwendung
+
+* Die Rich-Client-Webanwendung stellt alle Daten eines Servers möglichst detailliert dar.
+
+#### Datensammler
+
+* Der Datensammler ist eine Anwendung welche auf einem zu überwachenden System zum Einsatz kommt. Dieser sammelt alle Relevanten Daten und sendet diese in regelmäßigen Zeitabständen an den Webserver.
+
+#### Webserver
+
+* Der Webserver dient als Vermittler zwischen Datensammler und Webanwendung.
+
+### Schichten
+
+#### Socketverbindungen
+
+* Die Socketverbindungen arbeiten auf folgenden Schichten:
+  * Datensammler -> Webserver (TCP)
+  * Webserver -> Webanwendung (HTTP)
+
 
 ## 3.3 Datenmodell
     - Konzeptionelles Analyseklassendiagramm
 
-![Datenbankmodel](Datenbankmodell/Datenbankmodell.png "Datenbankmodel Web Service")
+#### Rich-Client-Webanwendung
 
-Das obige Diagramm zeigt das Schema der NoSQL Datenbank auf dem Webserver. Die Datenbank hält alte Daten zu je einem registrierten Server bereit für Analytische Zwecke und zum vergleichen der Daten über einen gewissen Zeitraum hinweg.
+#### Datensammler
+
+#### Webserver
 
 ## 3.4 Abläufe
     - Aktivitätsdiagramme für relevante Use Cases
@@ -215,17 +256,58 @@ Das obige Diagramm zeigt das Schema der NoSQL Datenbank auf dem Webserver. Die D
 # 4 Projektorganisation
 
 ## 4.1 Annahmen
-    - Nicht durch den Kunden definierte spezifische Annahmen, Anforderungen und Abhängigkeiten
-    - Verwendete Technologien (Programmiersprache, Frameworks, etc.)
-    - Einschränkungen, Betriebsbedingungen und Faktoren, die die Entwicklung beeinflussen (Betriebssysteme, Entwicklungsumgebung)
-    - Interne Qualitätsanforderungen (z.B. Softwarequalitätsmerkmale wie z.B. Erweiterbarkeit)
+
+### Technologien
+
+#### Programmiersprachen
+
+ * JavaScript
+ * TypeScript
+ * Python
+
+#### Frameworks
+
+ * NodeJS
+   * SocketIO
+   * Webpack
+   * JEST
+   * Jasmine
+   * Mocha
+ * ReactJS
+   * JEST
+ * Babel
+ * Python
+   * Psutil
+
+#### Entwicklung
+ * Atom IDE
+ * Travis CI
+
+#### Einschränkungen
+ * Die Plattformunabhängigkeit kann während des Entwicklungsprozesses zu Problemen führen.
+
+#### Qualitätsanforderungen
+ * Erweiterbarkeit der Webanwendung und des Datensammlers.
 
 ## 4.2 Verantwortlichkeiten
-    - Zuordnung von Personen zu Softwarebausteinen aus Kapitel 3.1 und 3.2
-    - Rollendefinition und Zuordnung
+
+### Rollendefinition
+
+#### Projektleitung und Entwicklung
+* Daniel Nagel
+
+#### Entwicklung
+* Devin-Alexander Meier
+
+### Zuordnung
+
+#### Rich-Client-Webanwendung
+#### Datensammler
+#### Webserver
 
 ## 4.3 Grober Projektplan
-    - Meilensteine
+
+![Projektplan](Projektplan/itm-projektplan.png "Projektplan")
 
 # 5 Anhänge
 
