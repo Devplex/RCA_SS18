@@ -111,6 +111,7 @@ Das IMT ist kein Ressourcenmonitor für einen Client. Es wird vorausgesetzt, das
 #### Use-Case-Diagramme
 
 ![Use-Case System](Usecases/Usecase_webanwendung.png "Use-Case System")
+![Use-Case System](Usecases/Usecase_server.png "Use-Case System")
 
 #### Rich-Client-Webanwendung
 * Konﬁgurierbarkeit der Anwendung.
