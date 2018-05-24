@@ -71,9 +71,9 @@ Durch das arbeiten in einem Mittelständischen Unternehmen mit mehreren Tochteru
 
 ### Umfang
 
-#### Rich-Client-Webanwendung
+#### Webanwendung
 
-Die Rich-Client-Webanwendung soll alle Daten eines Servers möglichst detailliert darstellen, aber gleichzeitig die Zustände aller anderen verbundenen Server in einfacher Weise darstellen, etwa mittels eines Farbcodes (Grün ist Gut, Rot ist schlecht).
+Die Webanwendung soll alle Daten eines Servers möglichst detailliert darstellen, aber gleichzeitig die Zustände aller anderen verbundenen Server in einfacher Weise darstellen, etwa mittels eines Farbcodes (Grün ist Gut, Rot ist schlecht).
 
 #### Datensammler
 
@@ -114,7 +114,7 @@ Das IMT ist kein Ressourcenmonitor für einen Client. Es wird vorausgesetzt, das
 ![Use-Case System](Usecases/Usecase_webanwendung.png "Use-Case System")
 ![Use-Case System](Usecases/Usecase_server.png "Use-Case System")
 
-#### Rich-Client-Webanwendung
+#### Webanwendung
 * Konﬁgurierbarkeit der Anwendung.
 * Neu registrierte Server sollen ohne weiteres zu tun des Nutzers hinzugefügt werden.
 
@@ -128,7 +128,7 @@ Das IMT ist kein Ressourcenmonitor für einen Client. Es wird vorausgesetzt, das
 
 ## 2.2 Nicht-funktionale Anforderungen
 
-#### Rich-Client-Webanwendung
+#### Webanwendung
 * Selbsterklärende GUI der Anwendung.
 * Intuitive Darstellung der Informationen
   für einen schnellen Überblick für das
@@ -171,7 +171,7 @@ Das IMT ist kein Ressourcenmonitor für einen Client. Es wird vorausgesetzt, das
 * Die Erweiterbarkeit sollte möglichst Individuell sein, daher liegt der Fokus hier auf den Umfang der Möglichen Erweiterbarkeit und weniger auf der Benutzerfreundlichkeit.
 
 ## 2.3 Graphische Benutzerschnittstelle
-![Rich-Client-Webanwendung](rich-client-app.png "Rich-Client-Webanwendung")
+![Webanwendung](rich-client-app.png "Webanwendung")
     - GUI-Mockups passend zu User Stories
     - Modellierung der Navigation zwischen den Screens der GUI-Mockups als Zustandsdiagramm
 
@@ -179,7 +179,7 @@ Das IMT ist kein Ressourcenmonitor für einen Client. Es wird vorausgesetzt, das
 
 ### User Stories
 
-#### Rich-Client-Webanwendung
+#### Webanwendung
 
 | **Als** | **möchte ich** | **so dass** | **Akzeptanz** |
 | :------ | :----- | :------ | :-------- |
@@ -201,7 +201,7 @@ Das IMT ist kein Ressourcenmonitor für einen Client. Es wird vorausgesetzt, das
 
 | **Als** | **möchte ich** | **so dass** | **Akzeptanz** |
 | :------ | :----- | :------ | :-------- |
-| Benutzer | eine automatische Verbindung zwischen Sammlern und Rich-Client-Webanwendung haben | keine Zeit bei der Konfiguration verloren geht | neue Server werden an der Oberfläche sofort regsitriert |
+| Benutzer | eine automatische Verbindung zwischen Sammlern und Webanwendung haben | keine Zeit bei der Konfiguration verloren geht | neue Server werden an der Oberfläche sofort regsitriert |
 
 [Zurück zum Anfang](#infinite-monitoring-tool)
 
@@ -210,15 +210,15 @@ Das IMT ist kein Ressourcenmonitor für einen Client. Es wird vorausgesetzt, das
 ## 3.1 Systemübersicht
 ![Systemarchitektur](Systemarchitektur/Systemarchitektur.png "Systemarchitektur")
 
-Das obige Diagramm stellt die Systemarchitektur dar. Auf der linken Seite des Diagramms wird die Rich-Client-Webanwendung über einen Webbrowser aufgerufen. Es wird ein Socket zum Webserver geöffnet. Dieser sendet, per HTTP, durchgehend die neuesten Daten der Datensammler an die Webanwendung, ohne das die Webanwendung neue Daten anfordern muss. Auf der rechten Seite befinden sich beliebig viele Server welche einen Datensammler Prozess laufen lassen. Diese erstellen ebenfalls einen Socket zum Webserver. Der Datensammler sendet, per TCP, durchgehend neue Daten an den Webserver. Dieser erkennt jeden Datensammler als neues Computersystem und gibt die Daten, über den offenen Socket an die Rich-Client-Webanwendung zur Darstellung weiter.
+Das obige Diagramm stellt die Systemarchitektur dar. Auf der linken Seite des Diagramms wird die Webanwendung über einen Webbrowser aufgerufen. Es wird ein Socket zum Webserver geöffnet. Dieser sendet, per HTTP, durchgehend die neuesten Daten der Datensammler an die Webanwendung, ohne das die Webanwendung neue Daten anfordern muss. Auf der rechten Seite befinden sich beliebig viele Server welche einen Datensammler Prozess laufen lassen. Diese erstellen ebenfalls einen Socket zum Webserver. Der Datensammler sendet, per TCP, durchgehend neue Daten an den Webserver. Dieser erkennt jeden Datensammler als neues Computersystem und gibt die Daten, über den offenen Socket an die Webanwendung zur Darstellung weiter.
 
 ## 3.2 Softwarearchitektur
 
 ### Komponenten
 
-#### Rich-Client-Webanwendung
+#### Webanwendung
 
-* Die Rich-Client-Webanwendung stellt alle Daten eines Servers möglichst detailliert dar.
+* Die Webanwendung stellt alle Daten eines Servers möglichst detailliert dar.
 
 #### Datensammler
 
@@ -238,35 +238,62 @@ Das obige Diagramm stellt die Systemarchitektur dar. Auf der linken Seite des Di
 
 
 ## 3.3 Datenmodell
-    - Konzeptionelles Analyseklassendiagramm
 
-#### Rich-Client-Webanwendung
+Der konzeptionelle  Entwurf der Implementierung aller Bestandteile des Softwaresystems.
+
+#### Webanwendung
+
+Die Webanwendung  wird durch einen Handler gesteuert der die Logik überwacht. Alle Elemente der Webanwendung erben von der UIObject Klasse.
 
 ![Webanwendung](Klassendiagramm/conceptual_webanwendung.png "Webanwendung")
 
 #### Datensammler
 
+Der Datensammler besitzt  eine Klasse die die Verbindung zum Webserver herstellt (Binder). Außerdem noch den Scraper selber, welcher die zu sammlenden Daten als Source kennt. Eine Source hat einen SourceType, welcher festlegt welche Art von Daten diese Quelle hat. Die Quellen sollen über eine formatierte Datei eingeladen werden können.
+
 ![Datascraper](Klassendiagramm/conceptual_datascraper.png "Datascraper")
 
 #### Webserver
 
+Der Webserver stellt die Verbindung zu allen Datensammlern und allen Webanwendungen her (Binder). Der Webserver verwaltet alle Datensammler in einem Scraper Objekt.
+
 ![server](Klassendiagramm/conceptual_server.png "server")
 
 ## 3.4 Abläufe
-    - Aktivitätsdiagramme für relevante Use Cases
-    - Aktivitätsdiagramm für den Ablauf sämtlicher Use Cases
+
+Die folgenden Aktivitätsdiagramme zeigen die Abläufe aller Komponenten des Softwaresystems.
+
+#### Webanwendung
+
+![Webanwendung](Aktivitätsdiagramm/webanwendung.png "Webanwendung")
+
+#### Datensammler
+
+![Datascraper](Aktivitätsdiagramm/datascraper.png "Datascraper")
+
+#### Webserver
+
+![server](Aktivitätsdiagramm/server.png "server")
 
 ## 3.5 Entwurf
 
-#### Rich-Client-Webanwendung
+Die folgenden UML-Diagramme konkretisieren die zuvor beschriebenen konzeptionellen UML-Diagramme des Softwaresystems.
+
+#### Webanwendung
+
+Die Webanwendung  wird durch einen Handler gesteuert der die Logik überwacht. Der Handler überprüft ebenfalls die Formatierung der Daten. Alle Elemente der Webanwendung erben von der UIObject Klasse. Ein besonderes UIObject ist der MiniServer. Dieser stellt die anderen Server der Weboberfläche dar die aktuell nicht im Fokus stehen. Anhand anpassbarer kritischer Werte, wird ein Status berechnet der das Objekt entsprechend einfärbt und den Nutzer  mit einem Sound auf sich Aufmerksam macht. Es wird eine Benutzeroberfläche anhand der Empfangen Daten erstellt. Optional können andere Daten angezeigt, z.B. die aktuelle Uhrzeit, oder die Empfangen Daten ausgeblendet werden.
 
 ![Webanwendung](Klassendiagramm/webanwendung.png "Webanwendung")
 
 #### Datensammler
 
+Der Datensammler besitzt  eine Klasse die die Verbindung zum Webserver herstellt (Binder). Dieser verbindet sich zu genau einem Server. Der Scraper sammelt die Daten. Dazu überprüft er die Sourcen und lädt eine formatierte Quellendatei ein. Eine Source ist die zu beschaffende Ressource, welche in der zuvor erwänten Quellendatei konkretisiert wird. Eine Source hat einen SourceType, welcher festlegt welche Art von Daten diese Quelle hat. Diese Information nutzt die Webanwendung, um zu erkennen welches UIObject das passende für diese Ressource ist.
+
 ![Datascraper](Klassendiagramm/datascraper.png "Datascraper")
 
 #### Webserver
+
+Der Webserver stellt die Verbindung zu allen Datensammlern und allen Webanwendungen her (Binder). Die registrierten Scraper werden in einem Array gesichert. Der Webserver verwaltet alle Datensammler in einem Scraper Objekt. Das Scraper Objekt beinhaltet eine IP-Adresse, einen Zeitstempel und die aktuellen Daten.
 
 ![server](Klassendiagramm/server.png "server")
 
@@ -322,11 +349,11 @@ Das obige Diagramm stellt die Systemarchitektur dar. Auf der linken Seite des Di
 
 ### Zuordnung
 
-#### Rich-Client-Webanwendung
-* Daniel Nagel
+#### Webanwendung
 * Devin-Alexander Meier
 
 #### Datensammler
+* Daniel Nagel
 * Devin-Alexander Meier
 
 #### Webserver
