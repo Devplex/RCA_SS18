@@ -46,7 +46,6 @@ Daniel Nagel           | 1085754
 5. Anhänge
     1. Glossar
     2. Referenzen
-    3. Index
 
 ---
 
@@ -175,9 +174,6 @@ Das IMT ist kein Ressourcenmonitor für einen Client. Es wird vorausgesetzt, das
     - Modellierung der Navigation zwischen den Screens der GUI-Mockups als Zustandsdiagramm
 
 ## 2.4 Anforderungen im Detail
-    - User Stories mit Akzeptanzkritierien
-    - Optional: Name (oder ID) und Priorität ("Must", "Should", "Could", "Won't")
-    - Strukturierung der User Stories in funktionale Gruppen
 
 ### User Stories
 
@@ -243,16 +239,34 @@ Das obige Diagramm stellt die Systemarchitektur dar. Auf der linken Seite des Di
 
 #### Rich-Client-Webanwendung
 
+![Webanwendung](Klassendiagramm/conceptual_webanwendung.png "Webanwendung")
+
 #### Datensammler
 
+![Datascraper](Klassendiagramm/conceptual_datascraper.png "Datascraper")
+
 #### Webserver
+
+![server](Klassendiagramm/conceptual_server.png "server")
 
 ## 3.4 Abläufe
     - Aktivitätsdiagramme für relevante Use Cases
     - Aktivitätsdiagramm für den Ablauf sämtlicher Use Cases
 
 ## 3.5 Entwurf
-    - Detaillierte UML-Diagramme für relevante Softwarebausteine
+
+#### Rich-Client-Webanwendung
+
+![Webanwendung](Klassendiagramm/webanwendung.png "Webanwendung")
+
+#### Datensammler
+
+![Datascraper](Klassendiagramm/datascraper.png "Datascraper")
+
+#### Webserver
+
+![server](Klassendiagramm/server.png "server")
+
 
 # 4 Projektorganisation
 
@@ -283,6 +297,8 @@ Das obige Diagramm stellt die Systemarchitektur dar. Auf der linken Seite des Di
 #### Entwicklung
  * Atom IDE
  * Travis CI
+ * PIP
+ * npm
 
 #### Einschränkungen
  * Die Plattformunabhängigkeit kann während des Entwicklungsprozesses zu Problemen führen.
@@ -303,8 +319,14 @@ Das obige Diagramm stellt die Systemarchitektur dar. Auf der linken Seite des Di
 ### Zuordnung
 
 #### Rich-Client-Webanwendung
+* Daniel Nagel
+* Devin-Alexander Meier
+
 #### Datensammler
+* Devin-Alexander Meier
+
 #### Webserver
+* Daniel Nagel
 
 ## 4.3 Grober Projektplan
 
@@ -313,9 +335,9 @@ Das obige Diagramm stellt die Systemarchitektur dar. Auf der linken Seite des Di
 # 5 Anhänge
 
 ## 5.1 Glossar
-    - Definitionen, Abkürzungen, Begriffe
+* __IMT__ - Infinite Monitoring Tool
+* __PIP__ - "pip installs packages", früher pyinstall
+* __npm__ - Node Package Manager
 
 ## 5.2 Referenzen
     - Handbücher, Gesetze
-
-## 5.3 Index
