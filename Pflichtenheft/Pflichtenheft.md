@@ -22,30 +22,30 @@ Daniel Nagel           | 1085754
 
 # Inhaltsverzeichnis
 
-1. Einführung
-    1. Beschreibung
-    2. Ziele
-2. Anforderungen
-    1. Funktionale Anforderungen
-    2. Nicht Funktionale Anforderungen
-        1. Rahmenbedingungen
-        2. Betriebsbedingungen
-        3. Qualitätsmerkmale
-    3. Graphische Benutzerschnittstelle
-    4. Anforderungen im Detail
-3. Technische Beschreibung
-    1. Systemübersicht
-    2. Softwarearchitektur
-    3. Datenmodell
-    4. Abläufe
-    5. Entwurf
-4. Projektorganisation
-    1. Annahmen
-    2. Verantwortlichkeiten
-    3. Grober Projektplan
-5. Anhänge
-    1. Glossar
-    2. Referenzen
+1. [Einführung](#1-einführung)
+    1. [Beschreibung](#11-beschreibung)
+    2. [Ziele](#12-ziele)
+2. [Anforderungen](#2-anforderungen)
+    1. [Funktionale Anforderungen](#21-funktionale-anforderungen)
+    2. [Nicht Funktionale Anforderungen](#22-nicht-funktionale-anforderungen)
+        1. [Rahmenbedingungen](#221-rahmenbedingungen)
+        2. [Betriebsbedingungen](#222-betriebsbedingungen)
+        3. [Qualitätsmerkmale](#223-qualitätsmerkmale)
+    3. [Graphische Benutzerschnittstelle](#23-graphische-benutzerschnittstelle)
+    4. [Anforderungen im Detail](#24-anforderungen-im-detail)
+3. [Technische Beschreibung](#3-technische-beschreibung)
+    1. [Systemübersicht](#31-systemübersicht)
+    2. [Softwarearchitektur](#32-softwarearchitektur)
+    3. [Datenmodell](#33-datenmodell)
+    4. [Abläufe](#34-abläufe)
+    5. [Entwurf](#35-entwurf)
+4. [Projektorganisation](#4-projektorganisation)
+    1. [Annahmen](#41-annahmen)
+    2. [Verantwortlichkeiten](#42-verantwortlichkeiten)
+    3. [Grober Projektplan](#43-grober-projektplan)
+5. [Anhänge](#5-anhänge)
+    1. [Glossar](#51-glossar)
+    2. [Referenzen](#52-referenzen)
 
 ---
 
@@ -102,6 +102,8 @@ Die Zielbenutzergruppe vom IMT sind IT-Abteilung von kleinen bis großen Unterne
 ### Abgrenzung
 
 Das IMT ist kein Ressourcenmonitor für einen Client. Es wird vorausgesetzt, dass die Umgebung mehrere zu überwachende Systeme beinhaltet. Außerdem muss durch den Benutzer festgelegt werden wann eine Ressource einen kritischen Wert erreicht oder kritische Informationen besonders hervorgehoben werden sollen. Das IMT kann keine Probleme lösen, sondern nur auf diese Aufmerksam machen.
+
+[Zurück zum Anfang](#infinite-monitoring-tool)
 
 # 2 Anforderungen
 
@@ -201,6 +203,7 @@ Das IMT ist kein Ressourcenmonitor für einen Client. Es wird vorausgesetzt, das
 | :------ | :----- | :------ | :-------- |
 | Benutzer | eine automatische Verbindung zwischen Sammlern und Rich-Client-Webanwendung haben | keine Zeit bei der Konfiguration verloren geht | neue Server werden an der Oberfläche sofort regsitriert |
 
+[Zurück zum Anfang](#infinite-monitoring-tool)
 
 # 3 Technische Beschreibung
 
@@ -267,6 +270,7 @@ Das obige Diagramm stellt die Systemarchitektur dar. Auf der linken Seite des Di
 
 ![server](Klassendiagramm/server.png "server")
 
+[Zurück zum Anfang](#infinite-monitoring-tool)
 
 # 4 Projektorganisation
 
@@ -332,6 +336,8 @@ Das obige Diagramm stellt die Systemarchitektur dar. Auf der linken Seite des Di
 
 ![Projektplan](Projektplan/itm-projektplan.png "Projektplan")
 
+[Zurück zum Anfang](#infinite-monitoring-tool)
+
 # 5 Anhänge
 
 ## 5.1 Glossar
@@ -341,3 +347,5 @@ Das obige Diagramm stellt die Systemarchitektur dar. Auf der linken Seite des Di
 
 ## 5.2 Referenzen
     - Handbücher, Gesetze
+
+[Zurück zum Anfang](#infinite-monitoring-tool)
