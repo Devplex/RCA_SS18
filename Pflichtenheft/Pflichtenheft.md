@@ -53,9 +53,9 @@ Daniel Nagel           | 1085754
 
 ## 1.1 Beschreibung
 
-Das 'Infinite Monitoring Tool' (kurz IMT) wird ein Skalierbares Monitoring Tool zur Überwachung von einer beliebigen Anzahl von Servern über eine dynamische und moderne Weboberfläche. Das sammeln der Serverdaten wird durch ein Skript realisiert. Dieses soll Plattformunabhängig sein und für den Endnutzer ohne viel Aufwand in Betrieb genommen werden. Die Empfangen Daten des 'Daten-Sammlers' werden als Server in der Weboberfläche erkannt und automatisch dargestellt.
+Das 'Infinite Monitoring Tool' (kurz IMT) wird ein Skalierbares Monitoring Tool zur Überwachung von einer beliebigen Anzahl von Servern über eine dynamische und moderne Weboberfläche. Das sammeln der Serverdaten wird durch ein Skript realisiert. Dieses soll Plattformunabhängig sein und für den Endnutzer ohne viel Aufwand in Betrieb genommen werden. Die Empfangen Daten des Data-Scraper werden als Server in der Weboberfläche erkannt und automatisch dargestellt.
 
-Der Daten 'Daten-Sammler', sowie die Webanwendung, sollen an die jeweiligen Bedürfnisse des Nutzers angepasst werden können. Die Bestandteile der Software sollen aber auch ohne weitere zu tun, mit den Standard Daten, direkt in Betrieb genommen werden können.
+Der Data-Scraper sowie die Webanwendung, sollen an die jeweiligen Bedürfnisse des Nutzers angepasst werden können. Die Bestandteile der Software sollen aber auch ohne weitere zu tun, mit den Standard Daten, direkt in Betrieb genommen werden können.
 
 Das Infinite Monitoring Tool wird im weiteren Verlauf des Dokuments abgekürzt IMT genannt.
 
@@ -75,17 +75,17 @@ Durch das arbeiten in einem Mittelständischen Unternehmen mit mehreren Tochteru
 
 Die Webanwendung soll alle Daten eines Servers möglichst detailliert darstellen, aber gleichzeitig die Zustände aller anderen verbundenen Server in einfacher Weise darstellen, etwa mittels eines Farbcodes (Grün ist Gut, Rot ist schlecht).
 
-#### Datensammler
+#### Data-Scraper
 
-Der Datensammler ist eine Anwendung welche auf einem zu überwachenden System zum Einsatz kommt. Dieser sammelt alle Relevanten Daten und sendet diese in regelmäßigen Zeitabständen an den Webserver.
+Der Data-Scraper ist eine Anwendung welche auf einem zu überwachenden System zum Einsatz kommt. Dieser sammelt alle Relevanten Daten und sendet diese in regelmäßigen Zeitabständen an den Data-Collector.
 
-#### Webserver
+#### Data-Collector
 
-Der Webserver registriert neue Server und teilt dies dem Frontend mit. Neue Daten von bereits registrierten Servern werden an das Frontend zur Darstellung  weitergeleitet.
+Der Data-Collector registriert neue Server und teilt dies dem Frontend mit. Neue Daten von bereits registrierten Servern werden an das Frontend zur Darstellung  weitergeleitet.
 
 #### Optionale Anforderungen
 
- Die detaillierte Darstellung soll jederzeit an die eigenen Bedürfnisse angepasst werden können. Weiterhin sollen über die Weboberfläche die Datensammler erweitert werden könne, z.B. um Skripts welche Informationen spezieller Hardware auslesen, etwa ein Temperatursensor.
+ Die detaillierte Darstellung soll jederzeit an die eigenen Bedürfnisse angepasst werden können. Weiterhin sollen über die Weboberfläche die Data-Scraper erweitert werden könne, z.B. um Skripts welche Informationen spezieller Hardware auslesen, etwa ein Temperatursensor.
 
 ### Marktanforderungen
 
@@ -118,11 +118,11 @@ Das IMT ist kein Ressourcenmonitor für einen Client. Es wird vorausgesetzt, das
 * Konﬁgurierbarkeit der Anwendung.
 * Neu registrierte Server sollen ohne weiteres zu tun des Nutzers hinzugefügt werden.
 
-#### Datensammler
+#### Data-Scraper
 * Möglichst Ressourcenschonend.
 * Erweiterbarkeit.
 
-#### Webserver
+#### Data-Collector
 * Registrieren neuer Server.
 * Weiterleiten neuer Informationen an das Frontend.
 
@@ -134,20 +134,20 @@ Das IMT ist kein Ressourcenmonitor für einen Client. Es wird vorausgesetzt, das
   für einen schnellen Überblick für das
   wesentliche.
 
-#### Datensammler
+#### Data-Scraper
 * Daten sollen in normalisierter Form weitergegeben werden.
 
 ### 2.2.1 Rahmenbedingungen
 
 #### Standards
-* Der verwendete Standard des Softwaresystems sind Sockets. Mithilfe der Sockets wird ein durchgehende Verbindung aufrecht erhalten. Datensammler, sowie Webanwendung sind üer einen Socket mit dem Webserver verbunden.
+* Der verwendete Standard des Softwaresystems sind Sockets. Mithilfe der Sockets wird ein durchgehende Verbindung aufrecht erhalten. Data-Scraper, sowie Webanwendung sind üer einen Socket mit dem Data-Collector verbunden.
 
 #### Protokolle
 * Das für  die Datenübertragung Verwendete Protokoll ist TCP (Transmission Control Protocol)
 
 #### Hardware
-* Die minimale Hardware Anforderungen für das Softwaresystem ist ein einziger Computer. Auf dem Computer würde ein Datensammler sowie der Webserver laufen. Der Datensammler sendet die Daten an den Webserver. Der Webserver sendet dann die Daten an die Weboberfläche die dann in einem Browser aufgerufen werden kann.
-* Geplant ist ein Webserver welcher eine große Menge von Socketverbindungen verarbeiten kann. Es soll keine Beschränkung in der Menge von zu überwachenden Servern geben. Genau so soll es keine Beschränkung in der Anzahl der Clients geben die eine Webanwendung anfordern.
+* Die minimale Hardware Anforderungen für das Softwaresystem ist ein einziger Computer. Auf dem Computer würde ein Data-Scraper sowie der Data-Collector laufen. Der Data-Scraper sendet die Daten an den Data-Collector. Der Data-Collector sendet dann die Daten an die Weboberfläche die dann in einem Browser aufgerufen werden kann.
+* Geplant ist ein Data-Collector welcher eine große Menge von Socketverbindungen verarbeiten kann. Es soll keine Beschränkung in der Menge von zu überwachenden Servern geben. Genau so soll es keine Beschränkung in der Anzahl der Clients geben die eine Webanwendung anfordern.
 
 ### 2.2.2 Betriebsbedingungen
 * Das System soll mit den neuesten Technologien betrieben werden:
@@ -185,19 +185,19 @@ Das IMT ist kein Ressourcenmonitor für einen Client. Es wird vorausgesetzt, das
 | :------ | :----- | :------ | :-------- |
 | Benutzer | eine intuitive Oberfläche der Anwendung angezeigt bekommen | die Überwachung der Systeme einfach ist | keine Dokumentation lesen müssen |
 | Benutzer | optisches Feedback zum Zustand der registrierten Server bekommen | schnell reagiert werden kann | selbst ein Laie erkannt das etwas nicht stimmt |
-| Benutzer | Vorkonfigurierte Datensammler und Webanwendungen angeboten bekommen | Zeit bei inbetriebnahme eingespart wird. | Kennenlernen des Systems, ohne diese erst "aufbauen" zu müssen. |
+| Benutzer | Vorkonfigurierte Data-Scraper und Webanwendungen angeboten bekommen | Zeit bei inbetriebnahme eingespart wird. | Kennenlernen des Systems, ohne diese erst "aufbauen" zu müssen. |
 | Benutzer | die Oberfläche verändern können | diese an meine speziellen Anforderungen angepasst ist | das System zeigt genau und nur die Informationen die ich brauche. |
 
-#### Datensammler
+#### Data-Scraper
 
 | **Als** | **möchte ich** | **so dass** | **Akzeptanz** |
 | :------ | :----- | :------ | :-------- |
-| Benutzer | den Datensammler direkt starten können | dieser vorher nicht noch konfiguriert werden muss | Zeit sparen |
+| Benutzer | den Data-Scraper direkt starten können | dieser vorher nicht noch konfiguriert werden muss | Zeit sparen |
 | Benutzer | sicherstellen können das alle Informationen die ich brauche gesammelt werden | keine wichtigen Informationen verloren gehen | alle relevanten Daten kommen an der Weboberfläche an |
-| Benutzer | den Datensammler erweitern können | spezielle Informationen gesammelt werden können | alle relevanten Daten kommen an der Weboberfläche an |
-| Benutzer | einen Ressourcenschonenden Datensammler haben | keine wichtigen Ressourcen verbraucht werden | der Betrieb des Datensammlers fällt nicht auf |
+| Benutzer | den Data-Scraper erweitern können | spezielle Informationen gesammelt werden können | alle relevanten Daten kommen an der Weboberfläche an |
+| Benutzer | einen Ressourcenschonenden Data-Scraper haben | keine wichtigen Ressourcen verbraucht werden | der Betrieb des Data-Scrapers fällt nicht auf |
 
-#### Webserver
+#### Data-Collector
 
 | **Als** | **möchte ich** | **so dass** | **Akzeptanz** |
 | :------ | :----- | :------ | :-------- |
@@ -210,7 +210,7 @@ Das IMT ist kein Ressourcenmonitor für einen Client. Es wird vorausgesetzt, das
 ## 3.1 Systemübersicht
 ![Systemarchitektur](Systemarchitektur/Systemarchitektur.png "Systemarchitektur")
 
-Das obige Diagramm stellt die Systemarchitektur dar. Auf der linken Seite des Diagramms wird die Webanwendung über einen Webbrowser aufgerufen. Es wird ein Socket zum Webserver geöffnet. Dieser sendet, per HTTP, durchgehend die neuesten Daten der Datensammler an die Webanwendung, ohne das die Webanwendung neue Daten anfordern muss. Auf der rechten Seite befinden sich beliebig viele Server welche einen Datensammler Prozess laufen lassen. Diese erstellen ebenfalls einen Socket zum Webserver. Der Datensammler sendet, per TCP, durchgehend neue Daten an den Webserver. Dieser erkennt jeden Datensammler als neues Computersystem und gibt die Daten, über den offenen Socket an die Webanwendung zur Darstellung weiter.
+Das obige Diagramm stellt die Systemarchitektur dar. Auf der linken Seite des Diagramms wird die Webanwendung über einen Webbrowser aufgerufen. Es wird ein Socket zum Data-Collector geöffnet. Dieser sendet, per HTTP, durchgehend die neuesten Daten der Data-Scraper an die Webanwendung, ohne das die Webanwendung neue Daten anfordern muss. Auf der rechten Seite befinden sich beliebig viele Server welche einen Data-Scraper Prozess laufen lassen. Diese erstellen ebenfalls einen Socket zum Data-Collector. Der Data-Scraper sendet, per TCP, durchgehend neue Daten an den Data-Collector. Dieser erkennt jeden Data-Scraper als neues Computersystem und gibt die Daten, über den offenen Socket an die Webanwendung zur Darstellung weiter.
 
 ## 3.2 Softwarearchitektur
 
@@ -220,21 +220,21 @@ Das obige Diagramm stellt die Systemarchitektur dar. Auf der linken Seite des Di
 
 * Die Webanwendung stellt alle Daten eines Servers möglichst detailliert dar.
 
-#### Datensammler
+#### Data-Scraper
 
-* Der Datensammler ist eine Anwendung welche auf einem zu überwachenden System zum Einsatz kommt. Dieser sammelt alle Relevanten Daten und sendet diese in regelmäßigen Zeitabständen an den Webserver.
+* Der Data-Scraper ist eine Anwendung welche auf einem zu überwachenden System zum Einsatz kommt. Dieser sammelt alle Relevanten Daten und sendet diese in regelmäßigen Zeitabständen an den Data-Collector.
 
-#### Webserver
+#### Data-Collector
 
-* Der Webserver dient als Vermittler zwischen Datensammler und Webanwendung.
+* Der Data-Collector dient als Vermittler zwischen Data-Scraper und Webanwendung.
 
 ### Schichten
 
 #### Socketverbindungen
 
 * Die Socketverbindungen arbeiten auf folgenden Schichten:
-  * Datensammler -> Webserver (TCP)
-  * Webserver -> Webanwendung (HTTP)
+  * Data-Scraper -> Data-Collector (TCP)
+  * Data-Collector -> Webanwendung (HTTP)
 
 
 ## 3.3 Datenmodell
@@ -247,15 +247,15 @@ Die Webanwendung  wird durch einen Handler gesteuert der die Logik überwacht. A
 
 ![Webanwendung](Klassendiagramm/conceptual_webanwendung.png "Webanwendung")
 
-#### Datensammler
+#### Data-Scraper
 
-Der Datensammler besitzt  eine Klasse die die Verbindung zum Webserver herstellt (Binder). Außerdem noch den Scraper selber, welcher die zu sammlenden Daten als Source kennt. Eine Source hat einen SourceType, welcher festlegt welche Art von Daten diese Quelle hat. Die Quellen sollen über eine formatierte Datei eingeladen werden können.
+Der Data-Scraper besitzt  eine Klasse die die Verbindung zum Data-Collector herstellt (Binder). Außerdem noch den Scraper selber, welcher die zu sammlenden Daten als Source kennt. Eine Source hat einen SourceType, welcher festlegt welche Art von Daten diese Quelle hat. Die Quellen sollen über eine formatierte Datei eingeladen werden können.
 
 ![Datascraper](Klassendiagramm/conceptual_datascraper.png "Datascraper")
 
-#### Webserver
+#### Data-Collector
 
-Der Webserver stellt die Verbindung zu allen Datensammlern und allen Webanwendungen her (Binder). Der Webserver verwaltet alle Datensammler in einem Scraper Objekt.
+Der Data-Collector stellt die Verbindung zu allen Data-Scrapern und allen Webanwendungen her (Binder). Der Data-Collector verwaltet alle Data-Scraper in einem Scraper Objekt.
 
 ![server](Klassendiagramm/conceptual_server.png "server")
 
@@ -267,11 +267,11 @@ Die folgenden Aktivitätsdiagramme zeigen die Abläufe aller Komponenten des Sof
 
 ![Webanwendung](Aktivitätsdiagramm/webanwendung.png "Webanwendung")
 
-#### Datensammler
+#### Data-Scraper
 
 ![Datascraper](Aktivitätsdiagramm/datascraper.png "Datascraper")
 
-#### Webserver
+#### Data-Collector
 
 ![server](Aktivitätsdiagramm/server.png "server")
 
@@ -285,15 +285,15 @@ Die Webanwendung  wird durch einen Handler gesteuert der die Logik überwacht. D
 
 ![Webanwendung](Klassendiagramm/webanwendung.png "Webanwendung")
 
-#### Datensammler
+#### Data-Scraper
 
-Der Datensammler besitzt  eine Klasse die die Verbindung zum Webserver herstellt (Binder). Dieser verbindet sich zu genau einem Server. Der Scraper sammelt die Daten. Dazu überprüft er die Sourcen und lädt eine formatierte Quellendatei ein. Eine Source ist die zu beschaffende Ressource, welche in der zuvor erwänten Quellendatei konkretisiert wird. Eine Source hat einen SourceType, welcher festlegt welche Art von Daten diese Quelle hat. Diese Information nutzt die Webanwendung, um zu erkennen welches UIObject das passende für diese Ressource ist.
+Der Data-Scraper besitzt  eine Klasse die die Verbindung zum Data-Collector herstellt (Binder). Dieser verbindet sich zu genau einem Server. Der Scraper sammelt die Daten. Dazu überprüft er die Sourcen und lädt eine formatierte Quellendatei ein. Eine Source ist die zu beschaffende Ressource, welche in der zuvor erwänten Quellendatei konkretisiert wird. Eine Source hat einen SourceType, welcher festlegt welche Art von Daten diese Quelle hat. Diese Information nutzt die Webanwendung, um zu erkennen welches UIObject das passende für diese Ressource ist.
 
 ![Datascraper](Klassendiagramm/datascraper.png "Datascraper")
 
-#### Webserver
+#### Data-Collector
 
-Der Webserver stellt die Verbindung zu allen Datensammlern und allen Webanwendungen her (Binder). Die registrierten Scraper werden in einem Array gesichert. Der Webserver verwaltet alle Datensammler in einem Scraper Objekt. Das Scraper Objekt beinhaltet eine IP-Adresse, einen Zeitstempel und die aktuellen Daten.
+Der Data-Collector stellt die Verbindung zu allen Data-Scrapern und allen Webanwendungen her (Binder). Die registrierten Scraper werden in einem Array gesichert. Der Data-Collector verwaltet alle Data-Scraper in einem Scraper Objekt. Das Scraper Objekt beinhaltet eine IP-Adresse, einen Zeitstempel und die aktuellen Daten.
 
 ![server](Klassendiagramm/server.png "server")
 
@@ -335,7 +335,7 @@ Der Webserver stellt die Verbindung zu allen Datensammlern und allen Webanwendun
  * Die Plattformunabhängigkeit kann während des Entwicklungsprozesses zu Problemen führen.
 
 #### Qualitätsanforderungen
- * Erweiterbarkeit der Webanwendung und des Datensammlers.
+ * Erweiterbarkeit der Webanwendung und des Data-Scrapers.
 
 ## 4.2 Verantwortlichkeiten
 
@@ -352,11 +352,11 @@ Der Webserver stellt die Verbindung zu allen Datensammlern und allen Webanwendun
 #### Webanwendung
 * Devin-Alexander Meier
 
-#### Datensammler
+#### Data-Scraper
 * Daniel Nagel
 * Devin-Alexander Meier
 
-#### Webserver
+#### Data-Collector
 * Daniel Nagel
 
 ## 4.3 Grober Projektplan
