@@ -1,4 +1,4 @@
-
+﻿
 # Infinite Monitoring Tool
 ## Pflichtenheft
 
@@ -171,7 +171,14 @@ Das IMT ist kein Ressourcenmonitor für einen Client. Es wird vorausgesetzt, das
 * Die Erweiterbarkeit sollte möglichst Individuell sein, daher liegt der Fokus hier auf den Umfang der Möglichen Erweiterbarkeit und weniger auf der Benutzerfreundlichkeit.
 
 ## 2.3 Graphische Benutzerschnittstelle
-![Webanwendung](Mockup/Website.PNG "Webanwendung")
+* Dashboard
+![Dashboard](Mockup/Website.PNG "Dashboard")
+
+* Settings
+![Settings](Mockup/Settings.PNG "Settings")
+
+* Login
+![Login](Mockup/Login.PNG "Login")
    
 ## 2.4 Anforderungen im Detail
 
