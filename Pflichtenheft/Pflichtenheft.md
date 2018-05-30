@@ -171,7 +171,7 @@ Das IMT ist kein Ressourcenmonitor für einen Client. Es wird vorausgesetzt, das
 * Die Erweiterbarkeit sollte möglichst Individuell sein, daher liegt der Fokus hier auf den Umfang der Möglichen Erweiterbarkeit und weniger auf der Benutzerfreundlichkeit.
 
 ## 2.3 Graphische Benutzerschnittstelle
-![Webanwendung](GUI-Mockup/Website.png "Webanwendung")
+![Webanwendung](Mockup/Website.PNG "Webanwendung")
     - GUI-Mockups passend zu User Stories
     - Modellierung der Navigation zwischen den Screens der GUI-Mockups als Zustandsdiagramm
 
