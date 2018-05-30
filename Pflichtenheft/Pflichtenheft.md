@@ -176,9 +176,6 @@ Das IMT ist kein Ressourcenmonitor für einen Client. Es wird vorausgesetzt, das
 
 * Settings
 ![Settings](Mockup/Settings.PNG "Settings")
-
-* Login
-![Login](Mockup/Login.PNG "Login")
    
 ## 2.4 Anforderungen im Detail
 
