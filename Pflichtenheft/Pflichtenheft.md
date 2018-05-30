@@ -172,9 +172,7 @@ Das IMT ist kein Ressourcenmonitor für einen Client. Es wird vorausgesetzt, das
 
 ## 2.3 Graphische Benutzerschnittstelle
 ![Webanwendung](Mockup/Website.PNG "Webanwendung")
-    - GUI-Mockups passend zu User Stories
-    - Modellierung der Navigation zwischen den Screens der GUI-Mockups als Zustandsdiagramm
-
+   
 ## 2.4 Anforderungen im Detail
 
 ### User Stories
