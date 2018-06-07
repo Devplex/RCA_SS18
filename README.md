@@ -18,6 +18,7 @@ Projekt Repo für das Modul Rich-Client-Application im Sommersemester 2018.
 * [Zur ES6 Präsentation](https://devplex.github.io/RCA_SS18/ES6_Präsentation/index.html)
 * [Zur React.js Präsentation](https://devplex.github.io/RCA_SS18/Reactjs_Präsentation/index.html)
 * [Zur npm,webpack Präsentation](https://devplex.github.io/RCA_SS18/npm_Präsentation/index.html)
+* [Zur Softwarequalität-Tooling Präsentation](https://devplex.github.io/RCA_SS18/SoftwarequalitätTooling_Präsentation/index.html)
 
 
 ### Pflichtenheft

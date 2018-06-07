@@ -4,12 +4,12 @@
   <element>
     <id>UMLGeneric</id>
     <coordinates>
-      <x>340</x>
-      <y>50</y>
-      <w>440</w>
+      <x>360</x>
+      <y>120</y>
+      <w>410</w>
       <h>220</h>
     </coordinates>
-    <panel_attributes>Webanwendung
+    <panel_attributes>Server
 halign=left</panel_attributes>
     <additional_attributes/>
   </element>
@@ -17,84 +17,84 @@ halign=left</panel_attributes>
     <id>UMLUseCase</id>
     <coordinates>
       <x>370</x>
-      <y>100</y>
+      <y>180</y>
       <w>200</w>
       <h>40</h>
     </coordinates>
-    <panel_attributes>Daten einsehen</panel_attributes>
+    <panel_attributes>Sammelt Daten</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>UMLUseCase</id>
     <coordinates>
-      <x>380</x>
-      <y>150</y>
-      <w>150</w>
-      <h>40</h>
-    </coordinates>
-    <panel_attributes>Ansicht anpassen</panel_attributes>
-    <additional_attributes/>
-  </element>
-  <element>
-    <id>UMLUseCase</id>
-    <coordinates>
-      <x>370</x>
-      <y>210</y>
-      <w>150</w>
-      <h>40</h>
-    </coordinates>
-    <panel_attributes>Daten vergleichen</panel_attributes>
-    <additional_attributes/>
-  </element>
-  <element>
-    <id>Relation</id>
-    <coordinates>
-      <x>260</x>
-      <y>110</y>
-      <w>130</w>
-      <h>80</h>
-    </coordinates>
-    <panel_attributes/>
-    <additional_attributes>10.0;60.0;110.0;10.0</additional_attributes>
-  </element>
-  <element>
-    <id>Relation</id>
-    <coordinates>
-      <x>260</x>
-      <y>150</y>
-      <w>140</w>
-      <h>40</h>
-    </coordinates>
-    <panel_attributes/>
-    <additional_attributes>10.0;20.0;120.0;20.0</additional_attributes>
-  </element>
-  <element>
-    <id>Relation</id>
-    <coordinates>
-      <x>260</x>
-      <y>160</y>
-      <w>130</w>
-      <h>90</h>
-    </coordinates>
-    <panel_attributes/>
-    <additional_attributes>10.0;10.0;110.0;70.0</additional_attributes>
-  </element>
-  <element>
-    <id>UMLActor</id>
-    <coordinates>
-      <x>210</x>
+      <x>530</x>
       <y>140</y>
-      <w>60</w>
+      <w>200</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>Registriert Datensammler</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLUseCase</id>
+    <coordinates>
+      <x>390</x>
+      <y>260</y>
+      <w>150</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>Schickt Daten</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>720</x>
+      <y>150</y>
+      <w>130</w>
       <h>110</h>
     </coordinates>
-    <panel_attributes>User</panel_attributes>
+    <panel_attributes/>
+    <additional_attributes>110.0;90.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>280</x>
+      <y>190</y>
+      <w>110</w>
+      <h>70</h>
+    </coordinates>
+    <panel_attributes/>
+    <additional_attributes>10.0;50.0;90.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>280</x>
+      <y>230</y>
+      <w>130</w>
+      <h>70</h>
+    </coordinates>
+    <panel_attributes/>
+    <additional_attributes>10.0;10.0;110.0;50.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>170</x>
+      <y>220</y>
+      <w>120</w>
+      <h>30</h>
+    </coordinates>
+    <panel_attributes>Datensammler</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
       <x>830</x>
-      <y>150</y>
+      <y>220</y>
       <w>100</w>
       <h>30</h>
     </coordinates>
@@ -104,23 +104,23 @@ halign=left</panel_attributes>
   <element>
     <id>UMLUseCase</id>
     <coordinates>
-      <x>620</x>
-      <y>100</y>
-      <w>140</w>
+      <x>550</x>
+      <y>230</y>
+      <w>200</w>
       <h>40</h>
     </coordinates>
-    <panel_attributes>Sendet Daten</panel_attributes>
+    <panel_attributes>Empfängt Daten</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>750</x>
-      <y>110</y>
-      <w>100</w>
-      <h>80</h>
+      <x>740</x>
+      <y>220</y>
+      <w>110</w>
+      <h>50</h>
     </coordinates>
     <panel_attributes/>
-    <additional_attributes>10.0;10.0;80.0;60.0</additional_attributes>
+    <additional_attributes>90.0;20.0;10.0;30.0</additional_attributes>
   </element>
 </diagram>
