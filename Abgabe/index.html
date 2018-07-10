@@ -28,6 +28,7 @@
         bottom: 3em;
       }
       .red { color: #fa0000; }
+      .bordeaux { color: #6e0000; }
       .title-pic img {
         max-width: 500px;
         max-height: 500px;
@@ -38,6 +39,13 @@
         max-height: 500px;
         left: 500px;
         top: 500px;
+      }
+      .background-image-extern img {
+        position: absolute;
+        max-width: 300px;
+        max-height: 300px;
+        left: 600px;
+        top: -40px;
       }
       .background-image-section img {
         position: absolute;
@@ -106,6 +114,16 @@ class: center, middle, inverse
 .background-image[![infinte-monitoring](Logo/imt-logo.png)]
 
 # Ziel der Software
+
+- `infinite monitoring` ist ein Skalierbares System zur überwachung von einer
+beliebigen Anzahl von Servern.
+- Soll in einem Unternehmen eingesetzt werden das eine hohe Anforderung an
+Ausfallsicherheit hat.
+- Schnelles reagieren bzw. vorbeugen von Ausfällen durch überwachen der Hard-/
+Software und sofortiges Alarmieren sobald kritische Werte erreicht werden.
+- Schlichtes übersichtliches Design.
+- Hohe Anpassbarkeit, bei einfacher Bedienung.
+- Plattformunabhängigkeit
 ---
 class: center, middle, inverse
 
@@ -116,6 +134,14 @@ class: center, middle, inverse
 .background-image[![infinte-monitoring](Logo/imt-logo.png)]
 
 # Use Cases
+
+![Use-Case System](../Pflichtenheft/Usecases/Usecase_webanwendung.png "Use-Case System")
+---
+.background-image[![infinte-monitoring](Logo/imt-logo.png)]
+
+# Use Cases
+
+![Use-Case System](../Pflichtenheft/Usecases/Usecase_server.png "Use-Case System")
 ---
 class: center, middle, inverse
 
@@ -140,8 +166,68 @@ class: center, middle, inverse
 # Verwendete Technologien
 ---
 .background-image[![infinte-monitoring](Logo/imt-logo.png)]
+.background-image-extern[![nodejs](img/nodejs.jpg)]
 
 # Verwendete Technologien
+
+- Node.js ist eine serverseitige, ereignisgesteuerte Plattform, zum Betrieb von
+Netzwerkanwendungen.
+- Wird in der Laufzeitumgebung `V8` ausgeführt.
+---
+.background-image[![infinte-monitoring](Logo/imt-logo.png)]
+.background-image-extern[![nodejs](img/nodejs.jpg)]
+
+# Verwendete Technologien
+
+## Node.js interne Module
+
+- .bordeaux[child_process] bietet die Möglichkeit Kindsprozesse zu erstellen.
+- .bordeaux[crypto] bietet kryptografische Funktionalität.
+- .bordeaux[events] bietet die Möglichkeit auf eigene Events zu warten und diese
+auszulösen.
+- .bordeaux[fs] bietet eine API um mit dem Dateisystem zu interagieren.
+- .bordeaux[net] bietet eine asynchrone Netzwerk API für stream-basierte TCP Server.
+- .bordeaux[os] bietet Betriebsystem abhängige Methoden.
+- .bordeaux[path] bietet Methoden zum Arbeiten mit Datei- und Verzeichnispfaden.
+
+---
+.background-image[![infinte-monitoring](Logo/imt-logo.png)]
+.background-image-extern[![nodejs](img/nodejs.jpg)]
+
+# Verwendete Technologien
+
+## Node.js externe Module
+
+- .bordeaux[chalk] färbt Terminal ausgaben ein.
+- .bordeaux[chai] 'assertion' Bibliothek.
+- .bordeaux[clear] equivalent zum `clear` Befehl im Terminal.
+- .bordeaux[diskusage] liefert Informationen zu totalen, freien und benutzten
+Speicher einer Partition
+- .bordeaux[drivelist] listet alle verfügbaren Festplatten eines Computers.
+- .bordeaux[express] web framework.
+- .bordeaux[figlet] wandelt Text in ASCII-Art um.
+- .bordeaux[getmac] liefert die MAC-Adress einer Netzwerkkarte.
+- .bordeaux[inquirer] eine Sammlung interaktiver Befehlszeilen
+Benutzeroberflächen
+- .bordeaux[minimist] verarbeiten von Befehlszeilenargumenten.
+
+---
+.background-image[![infinte-monitoring](Logo/imt-logo.png)]
+.background-image-extern[![nodejs](img/nodejs.jpg)]
+
+# Verwendete Technologien
+
+## Node.js externe Module
+
+- .bordeaux[mocha] Test Framework.
+- .bordeaux[ping] macht den `ping` Befehl des Betriebsystems für Node.js
+verfügbar.
+- .bordeaux[pretty-bytes] wandelt Bytes in eine Menschen lesbare Größenordnung
+um.
+- .bordeaux[pretty-ms] wandelt Millisekunden in eine Menschen lesbare
+Größenordnung um.
+- .bordeaux[socketio] echtzeit Bi-Direktionale eventgesteuerte Websocket
+Verbindungen.
 ---
 class: center, middle, inverse
 
@@ -164,6 +250,7 @@ class: center, middle, inverse
 .background-image[![infinte-monitoring](Logo/imt-logo.png)]
 
 # Lessons Learned
+
 ---
 class: center, middle, inverse
 
