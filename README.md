@@ -33,4 +33,4 @@ Projekt Repo für das Modul Rich-Client-Application im Sommersemester 2018.
 
 ### Projektpräsentation
 
-* Zur Softwareprojekt Präsentation
+* [Zur Softwareprojekt Präsentation](https://devplex.github.io/RCA_SS18/Abgabe/index.html)
