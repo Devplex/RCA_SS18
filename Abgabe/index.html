@@ -103,6 +103,7 @@ class: index
 - Verwendete Technologien
 - Demo
 - Quellcode
+- Ausblick
 - Lessons Learned
 ---
 class: center, middle, inverse
@@ -118,7 +119,7 @@ class: center, middle, inverse
 - `infinite monitoring` ist ein Skalierbares System zur überwachung von einer
 beliebigen Anzahl von Servern.
 - Soll in einem Unternehmen eingesetzt werden das eine hohe Anforderung an
-Ausfallsicherheit hat.
+IT-Ausfallsicherheit hat.
 - Schnelles reagieren bzw. vorbeugen von Ausfällen durch überwachen der Hard-/
 Software und sofortiges Alarmieren sobald kritische Werte erreicht werden.
 - Schlichtes übersichtliches Design.
@@ -168,17 +169,25 @@ class: center, middle, inverse
 # Verwendete Technologien
 ---
 .background-image[![infinte-monitoring](Logo/imt-logo.png)]
+.background-image-extern[![nodejs](img/npm-logo.png)]
+
 
 # Verwendete Technologien
 
 ## npm (Node Package Manager)
 
-- Paket manager für Javascript
-- Einfaches einbinden von Modulen
+- Paketmanager für Node.js
+- Einfaches verwalten, installieren und aktualisieren von Modulen
+---
+.background-image[![infinte-monitoring](Logo/imt-logo.png)]
+.background-image-extern[![nodejs](img/git-logo.png)]
+
+# Verwendete Technologien
 
 ## Git
 
-- Versionskontrollsystem
+- Versionsverwaltung von Dateien
+- Mit einem Onlinedienst wie Github können Projekte in Teams über das Internet bearbeitet werden.
 ---
 .background-image[![infinte-monitoring](Logo/imt-logo.png)]
 .background-image-extern[![nodejs](img/nodejs.jpg)]
@@ -279,11 +288,59 @@ class: center, middle, inverse
 
 .background-image-section[![infinte-monitoring](Logo/imt-logo-with-text.png)]
 
+# Ausblick
+---
+.background-image[![infinte-monitoring](Logo/imt-logo.png)]
+
+# Ausblick - Backend
+
+- Scraper in Service umwandeln
+  - Build Prozess der den Scraper in eine Ausführbare Datei umwandelt
+  - Neue Scraper Module sollen dynamisch eingelesen werden
+- Authentifizierung
+- Typescript
+- Logging und Debuging System
+- Datenbank zum archivieren der Daten
+- CI/CD
+  - [Travis-CI](https://travis-ci.org/) CI/CD Tool
+  - [Snyk](https://snyk.io/) findet Sicherheitslücken
+  - [greenkeeper](https://greenkeeper.io/) automatisierte Abhängigkeit Updates und überwachung
+  - [coveralls](https://coveralls.io/) Test coverage
+  - [Danger](http://danger.systems/js/) Wichtige Informationen für das Team nach jedem CI Prozess
+
+---
+.background-image[![infinte-monitoring](Logo/imt-logo.png)]
+
+# Ausblick - Frontend
+
+- Panels ändern können (Name, Anzeige, verschieben)
+- Panels über Dashboard selber hinzufügen können
+- Serverstatus in der Sidebar farblich markieren
+- Benutzer Alarmieren, visuell und mit einem Alarm Sound
+
+---
+.background-image[![infinte-monitoring](Logo/imt-logo.png)]
+
+# Ausblick - Zukunft
+
+- Voraussetzung: alle Features implementiert
+- Machin Learning Algorithmus anbinden
+- Erkennen von Anomalien in den gesammelten Daten
+---
+class: center, middle, inverse
+
+.background-image-section[![infinte-monitoring](Logo/imt-logo-with-text.png)]
+
 # Lessons Learned
 ---
 .background-image[![infinte-monitoring](Logo/imt-logo.png)]
 
 # Lessons Learned
+
+- git
+- nodejs
+- npm
+- react
 
 ---
 class: center, middle, inverse
